@@ -1,0 +1,3 @@
+-keep class com.getcapacitor.** { *; }
+-keepclassmembers class * { @com.getcapacitor.annotation.* *; }
+-keep class com.google.firebase.** { *; }

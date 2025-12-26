@@ -35,7 +35,7 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
-            minifyEnabled true
+            minifyEnabled false
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -61,6 +61,8 @@ dependencies {
     // Firebase BOM - tüm Firebase versiyonlarını yönetir
     implementation platform('com.google.firebase:firebase-bom:32.7.0')
     implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-common-ktx'
+    implementation 'com.google.firebase:firebase-installations-ktx'
     // Firestore'u ayrı ekleme, push-notifications plugin zaten yönetiyor
     
     // WorkManager - Arka plan görevleri için
