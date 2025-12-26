@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 4 - Diamond Store</title>
+    <style>
+        body { 
+            background: #1a1a2e; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border: 3px solid rgba(76, 175, 80, 0.4);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Logo 4 - Elmas Mağaza</h2>
+    <div class="logo-container">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Elmas Şekli -->
+            <path d="M40 8L65 28L40 72L15 28L40 8Z" fill="url(#diamondGrad)" stroke="#4CAF50" stroke-width="2"/>
+            <!-- Elmas İç Çizgiler -->
+            <path d="M40 8L25 28H55L40 8Z" fill="url(#topGrad)" stroke="#4CAF50" stroke-width="1"/>
+            <path d="M25 28L40 72L15 28H25Z" fill="url(#leftGrad)"/>
+            <path d="M55 28L40 72L65 28H55Z" fill="url(#rightGrad)"/>
+            <!-- Parıltı -->
+            <circle cx="35" cy="20" r="3" fill="#fff" opacity="0.8"/>
+            <circle cx="30" cy="25" r="1.5" fill="#fff" opacity="0.5"/>
+            <!-- STORE Yazısı -->
+            <text x="40" y="50" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#fff">STORE</text>
+            <defs>
+                <linearGradient id="diamondGrad" x1="15" y1="8" x2="65" y2="72">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="50%" stop-color="#2196F3"/>
+                    <stop offset="100%" stop-color="#4CAF50"/>
+                </linearGradient>
+                <linearGradient id="topGrad" x1="25" y1="8" x2="55" y2="28">
+                    <stop offset="0%" stop-color="#81C784"/>
+                    <stop offset="100%" stop-color="#4CAF50"/>
+                </linearGradient>
+                <linearGradient id="leftGrad" x1="15" y1="28" x2="40" y2="72">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="100%" stop-color="#2E7D32"/>
+                </linearGradient>
+                <linearGradient id="rightGrad" x1="65" y1="28" x2="40" y2="72">
+                    <stop offset="0%" stop-color="#64B5F6"/>
+                    <stop offset="100%" stop-color="#1976D2"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <p class="description">Parlak elmas tasarımı<br>"STORE" yazısı ile</p>
+</body>
+</html>

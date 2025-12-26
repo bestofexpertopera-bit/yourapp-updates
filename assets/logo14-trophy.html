@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 14 - Trophy</title>
+    <style>
+        body { background: #1a1a2e; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container { width: 120px; height: 120px; border-radius: 28px; background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%); border: 3px solid rgba(76, 175, 80, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3); display: flex; align-items: center; justify-content: center; }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Logo 14 - Kupa</h2>
+    <div class="logo-container">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Kupa Gövdesi -->
+            <path d="M22 15H58V35C58 48 50 55 40 55C30 55 22 48 22 35V15Z" fill="url(#trophyGrad)" stroke="#FFD700" stroke-width="2"/>
+            <!-- Sol Kulp -->
+            <path d="M22 20H15C12 20 10 22 10 25V30C10 35 13 38 18 38H22" fill="none" stroke="#FFD700" stroke-width="2"/>
+            <!-- Sağ Kulp -->
+            <path d="M58 20H65C68 20 70 22 70 25V30C70 35 67 38 62 38H58" fill="none" stroke="#FFD700" stroke-width="2"/>
+            <!-- Kupa Ayağı -->
+            <rect x="35" y="55" width="10" height="8" fill="#FFD700"/>
+            <!-- Kupa Tabanı -->
+            <rect x="28" y="63" width="24" height="6" rx="2" fill="url(#baseGrad14)" stroke="#FFD700" stroke-width="1"/>
+            <!-- Yıldız -->
+            <path d="M40 22L42 28L48 28L43 32L45 38L40 34L35 38L37 32L32 28L38 28Z" fill="#fff"/>
+            <!-- Parıltı -->
+            <circle cx="50" cy="22" r="3" fill="#fff" opacity="0.6"/>
+            <defs>
+                <linearGradient id="trophyGrad" x1="22" y1="15" x2="58" y2="55">
+                    <stop offset="0%" stop-color="#FFD700"/>
+                    <stop offset="50%" stop-color="#FFA000"/>
+                    <stop offset="100%" stop-color="#FF8F00"/>
+                </linearGradient>
+                <linearGradient id="baseGrad14" x1="28" y1="63" x2="52" y2="69">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="100%" stop-color="#2E7D32"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <p class="description">Altın kupa<br>Şampiyonluk sembolü</p>
+</body>
+</html>

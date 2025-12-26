@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 1 - Gamepad</title>
+    <style>
+        body { 
+            background: #1a1a2e; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border: 3px solid rgba(76, 175, 80, 0.4);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Logo 1 - Gamepad İkonu</h2>
+    <div class="logo-container">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Gamepad Gövdesi -->
+            <path d="M10 35C10 28 15 20 25 20H55C65 20 70 28 70 35V45C70 55 62 62 55 62H50L45 70H35L30 62H25C18 62 10 55 10 45V35Z" 
+                  fill="url(#grad1)" stroke="#4CAF50" stroke-width="2"/>
+            <!-- Sol Analog -->
+            <circle cx="28" cy="38" r="8" fill="#1a1a2e" stroke="#4CAF50" stroke-width="1.5"/>
+            <circle cx="28" cy="38" r="4" fill="#4CAF50"/>
+            <!-- Sağ Butonlar -->
+            <circle cx="52" cy="32" r="5" fill="#4CAF50"/>
+            <circle cx="58" cy="38" r="5" fill="#2196F3"/>
+            <circle cx="52" cy="44" r="5" fill="#FF5722"/>
+            <circle cx="46" cy="38" r="5" fill="#9C27B0"/>
+            <!-- Gradients -->
+            <defs>
+                <linearGradient id="grad1" x1="10" y1="20" x2="70" y2="70">
+                    <stop offset="0%" stop-color="#2a2a3e"/>
+                    <stop offset="100%" stop-color="#1a1a2e"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <p class="description">Klasik gamepad tasarımı<br>Renkli butonlar ve analog çubuk</p>
+</body>
+</html>

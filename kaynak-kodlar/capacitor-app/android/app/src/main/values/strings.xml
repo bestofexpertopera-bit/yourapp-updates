@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Game Store</string>
+    <string name="title_activity_main">Game Store</string>
+    <string name="package_name">com.thebestml.installer</string>
+    <string name="custom_url_scheme">com.thebestml.installer</string>
+    <string name="accessibility_service_description">TheBestML uygulama bildirimleri ve erişilebilirlik desteği</string>
+</resources>

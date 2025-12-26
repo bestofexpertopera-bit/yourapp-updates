@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 7 - Crown</title>
+    <style>
+        body { 
+            background: #1a1a2e; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border: 3px solid rgba(76, 175, 80, 0.4);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Logo 7 - Taç</h2>
+    <div class="logo-container">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Taç Şekli -->
+            <path d="M12 55L18 25L28 40L40 18L52 40L62 25L68 55H12Z" 
+                  fill="url(#crownGrad)" stroke="#FFD700" stroke-width="2"/>
+            <!-- Taç Alt Bant -->
+            <rect x="12" y="55" width="56" height="10" rx="2" fill="url(#bandGrad)" stroke="#FFD700" stroke-width="1"/>
+            <!-- Mücevherler -->
+            <circle cx="18" cy="25" r="4" fill="#FF5722" stroke="#FFD700" stroke-width="1"/>
+            <circle cx="40" cy="18" r="5" fill="#4CAF50" stroke="#FFD700" stroke-width="1"/>
+            <circle cx="62" cy="25" r="4" fill="#2196F3" stroke="#FFD700" stroke-width="1"/>
+            <!-- GS Yazısı -->
+            <text x="40" y="50" text-anchor="middle" font-family="Arial Black" font-size="16" font-weight="900" fill="#FFD700">GS</text>
+            <defs>
+                <linearGradient id="crownGrad" x1="12" y1="18" x2="68" y2="55">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="50%" stop-color="#2E7D32"/>
+                    <stop offset="100%" stop-color="#4CAF50"/>
+                </linearGradient>
+                <linearGradient id="bandGrad" x1="12" y1="55" x2="68" y2="65">
+                    <stop offset="0%" stop-color="#2E7D32"/>
+                    <stop offset="100%" stop-color="#1B5E20"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <p class="description">Kraliyet tacı tasarımı<br>Mücevherli premium görünüm</p>
+</body>
+</html>

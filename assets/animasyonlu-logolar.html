@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tüm Logo Seçenekleri (Animasyonlu)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%); 
+            min-height: 100vh; 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            padding: 30px;
+            color: #fff;
+        }
+        h1 { 
+            text-align: center; 
+            margin-bottom: 20px; 
+            font-size: 32px;
+            background: linear-gradient(90deg, #4CAF50, #2196F3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 24px;
+            margin: 40px 0 20px;
+            padding: 10px;
+            background: rgba(76, 175, 80, 0.2);
+            border-radius: 10px;
+            color: #4CAF50;
+        }
+        
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto 40px;
+        }
+        .logo-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .logo-card:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #4CAF50;
+            transform: translateY(-5px);
+        }
+        .logo-number {
+            font-size: 14px;
+            color: #4CAF50;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .logo-name {
+            font-size: 16px;
+            color: #fff;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+        .logo-desc {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+        }
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Animasyon Stilleri */
+        .g-line { stroke-dasharray: 300; stroke-dashoffset: 300; animation: drawG 2s ease-out forwards; }
+        .s-line { stroke-dasharray: 300; stroke-dashoffset: -300; animation: drawS 2s ease-out forwards; }
+        @keyframes drawG { 0% { stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; } }
+        @keyframes drawS { 0% { stroke-dashoffset: -300; } 100% { stroke-dashoffset: 0; } }
+        
+        .g-neon { stroke-dasharray: 400; stroke-dashoffset: 400; animation: drawNeonG 1.5s ease-out forwards, glowG 1s ease-in-out 1.5s infinite alternate; filter: drop-shadow(0 0 3px #4CAF50); }
+        .s-neon { stroke-dasharray: 400; stroke-dashoffset: -400; animation: drawNeonS 1.5s ease-out forwards, glowS 1s ease-in-out 1.5s infinite alternate; filter: drop-shadow(0 0 3px #2196F3); }
+        @keyframes drawNeonG { 0% { stroke-dashoffset: 400; opacity: 0; } 10% { opacity: 1; } 100% { stroke-dashoffset: 0; } }
+        @keyframes drawNeonS { 0% { stroke-dashoffset: -400; opacity: 0; } 10% { opacity: 1; } 100% { stroke-dashoffset: 0; } }
+        @keyframes glowG { 0% { filter: drop-shadow(0 0 5px #4CAF50); } 100% { filter: drop-shadow(0 0 15px #4CAF50); } }
+        @keyframes glowS { 0% { filter: drop-shadow(0 0 5px #2196F3); } 100% { filter: drop-shadow(0 0 15px #2196F3); } }
+        
+        .g-slide { position: absolute; left: -50px; animation: slideLeft 1s ease-out forwards; }
+        .s-slide { position: absolute; right: -50px; animation: slideRight 1s ease-out forwards; }
+        @keyframes slideLeft { 0% { left: -50px; opacity: 0; } 100% { left: 12px; opacity: 1; } }
+        @keyframes slideRight { 0% { right: -50px; opacity: 0; } 100% { right: 12px; opacity: 1; } }
+        
+        .g-text-anim { font-family: 'Arial Black', sans-serif; font-size: 42px; font-weight: 900; position: absolute; left: 18px; color: #4CAF50; text-shadow: 0 0 15px #4CAF50; clip-path: inset(0 100% 0 0); animation: revealClipG 1.5s ease-out forwards; }
+        .s-text-anim { font-family: 'Arial Black', sans-serif; font-size: 42px; font-weight: 900; position: absolute; right: 18px; color: #2196F3; text-shadow: 0 0 15px #2196F3; clip-path: inset(0 0 0 100%); animation: revealClipS 1.5s ease-out forwards; }
+        @keyframes revealClipG { 0% { clip-path: inset(0 100% 0 0); opacity: 0; } 100% { clip-path: inset(0 0% 0 0); opacity: 1; } }
+        @keyframes revealClipS { 0% { clip-path: inset(0 0 0 100%); opacity: 0; } 100% { clip-path: inset(0 0 0 0%); opacity: 1; } }
+        
+        .laser-g { position: absolute; height: 3px; top: 50%; left: 0; width: 0; background: linear-gradient(90deg, transparent, #4CAF50); box-shadow: 0 0 10px #4CAF50; animation: laserG 0.8s ease-out forwards; }
+        .laser-s { position: absolute; height: 3px; top: 50%; right: 0; width: 0; background: linear-gradient(-90deg, transparent, #2196F3); box-shadow: 0 0 10px #2196F3; animation: laserS 0.8s ease-out forwards; }
+        @keyframes laserG { 0% { width: 0; left: 0; } 50% { width: 60px; left: 0; } 100% { width: 0; left: 60px; } }
+        @keyframes laserS { 0% { width: 0; right: 0; } 50% { width: 60px; right: 0; } 100% { width: 0; right: 60px; } }
+        .laser-text-g { position: absolute; left: 18px; font-family: 'Arial Black', sans-serif; font-size: 40px; font-weight: 900; color: #4CAF50; opacity: 0; text-shadow: 0 0 20px #4CAF50; animation: laserReveal 0.5s ease-out 0.6s forwards; }
+        .laser-text-s { position: absolute; right: 18px; font-family: 'Arial Black', sans-serif; font-size: 40px; font-weight: 900; color: #2196F3; opacity: 0; text-shadow: 0 0 20px #2196F3; animation: laserReveal 0.5s ease-out 0.6s forwards; }
+        @keyframes laserReveal { 0% { opacity: 0; } 100% { opacity: 1; } }
+        
+        .replay-all {
+            display: block;
+            margin: 30px auto;
+            background: linear-gradient(135deg, #4CAF50 0%, #2196F3 100%);
+            border: none;
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .replay-all:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 30px rgba(76, 175, 80, 0.5);
+        }
+        
+        .instructions {
+            text-align: center;
+            background: rgba(76, 175, 80, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .instructions h3 { color: #4CAF50; margin-bottom: 10px; }
+        .instructions p { color: #aaa; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <h1>🎮 Game Store Logo Seçenekleri</h1>
+    <p class="subtitle">Animasyonlu Logolar - G soldan, S sağdan gelir</p>
+    
+    <div class="instructions">
+        <h3>📌 Animasyonlu Logo Seçenekleri</h3>
+        <p>Aşağıda G harfinin soldan, S harfinin sağdan gelip ortada birleştiği 6 farklı animasyon stili bulunuyor.</p>
+    </div>
+
+    <h2 class="section-title">🎬 Animasyonlu Logolar (17-22)</h2>
+    <div class="logo-grid">
+        <!-- Logo 17 - Çizgi Animasyonu -->
+        <div class="logo-card">
+            <div class="logo-number">Logo #17</div>
+            <div class="logo-container" id="logo17">
+                <svg width="100" height="100" viewBox="0 0 120 120" fill="none">
+                    <path class="g-line" d="M15 85V45C15 30 25 20 40 20H55V32H40C32 32 28 36 28 45V85C28 92 32 98 40 98H55V65H42V53H68V85C68 100 58 110 43 110H40C25 110 15 100 15 85Z" fill="none" stroke="url(#gGrad17)" stroke-width="4" stroke-linecap="round"/>
+                    <path class="s-line" d="M105 45C105 30 95 20 80 20H65V32H80C88 32 92 36 92 45V50C92 58 88 62 80 62H65C50 62 40 72 40 85V90C40 105 50 110 65 110H105V98H65C57 98 53 94 53 85V80C53 72 57 68 65 68H80C95 68 105 58 105 45Z" fill="none" stroke="url(#sGrad17)" stroke-width="4" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="gGrad17" x1="15" y1="20" x2="68" y2="110"><stop offset="0%" stop-color="#4CAF50"/><stop offset="100%" stop-color="#81C784"/></linearGradient>
+                        <linearGradient id="sGrad17" x1="105" y1="20" x2="40" y2="110"><stop offset="0%" stop-color="#2196F3"/><stop offset="100%" stop-color="#64B5F6"/></linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="logo-name">Çizgi Animasyonu</div>
+            <div class="logo-desc">G ve S çizilerek belirir</div>
+        </div>
+
+        <!-- Logo 18 - Neon Glow -->
+        <div class="logo-card">
+            <div class="logo-number">Logo #18</div>
+            <div class="logo-container" id="logo18">
+                <svg width="100" height="100" viewBox="0 0 120 120" fill="none">
+                    <path class="g-neon" d="M20 80V50C20 35 30 25 45 25H58V35H45C38 35 34 40 34 50V80C34 88 38 92 45 92H58V65H46V55H70V80C70 95 60 105 47 105H45C30 105 20 95 20 80Z" fill="none" stroke="#4CAF50" stroke-width="5" stroke-linecap="round"/>
+                    <path class="s-neon" d="M100 50C100 35 90 25 75 25H62V35H75C83 35 88 40 88 50C88 58 83 62 75 62H62C47 62 38 72 38 85C38 100 48 105 62 105H100V95H62C54 95 50 90 50 85C50 77 54 73 62 73H75C90 73 100 63 100 50Z" fill="none" stroke="#2196F3" stroke-width="5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="logo-name">Neon Glow</div>
+            <div class="logo-desc">Parlayan neon efekti</div>
+        </div>
+
+        <!-- Logo 19 - Slide -->
+        <div class="logo-card">
+            <div class="logo-number">Logo #19</div>
+            <div class="logo-container" id="logo19">
+                <svg class="g-slide" width="45" height="80" viewBox="0 0 55 100" fill="none">
+                    <path d="M5 75V35C5 20 15 10 30 10H45V22H30C22 22 18 27 18 35V75C18 83 22 88 30 88H45V55H32V43H55V75C55 90 45 100 32 100H30C15 100 5 90 5 75Z" fill="url(#gSlide)"/>
+                    <defs><linearGradient id="gSlide" x1="5" y1="10" x2="55" y2="100"><stop offset="0%" stop-color="#4CAF50"/><stop offset="100%" stop-color="#81C784"/></linearGradient></defs>
+                </svg>
+                <svg class="s-slide" width="45" height="80" viewBox="0 0 55 100" fill="none">
+                    <path d="M50 35C50 20 40 10 25 10H0V22H25C33 22 38 27 38 35C38 43 33 48 25 48H10C-5 48 -10 58 -10 70V75C-10 90 0 100 15 100H50V88H15C7 88 3 83 3 75V70C3 62 7 58 15 58H25C40 58 50 48 50 35Z" fill="url(#sSlide)"/>
+                    <defs><linearGradient id="sSlide" x1="50" y1="10" x2="0" y2="100"><stop offset="0%" stop-color="#2196F3"/><stop offset="100%" stop-color="#64B5F6"/></linearGradient></defs>
+                </svg>
+            </div>
+            <div class="logo-name">Kayarak Birleşme</div>
+            <div class="logo-desc">G ve S kayarak gelir</div>
+        </div>
+
+        <!-- Logo 20 - Morph (Clip reveal yerine) -->
+        <div class="logo-card">
+            <div class="logo-number">Logo #20</div>
+            <div class="logo-container" id="logo20">
+                <span class="g-text-anim">G</span>
+                <span class="s-text-anim">S</span>
+            </div>
+            <div class="logo-name">Açılış Efekti</div>
+            <div class="logo-desc">G soldan açılır, S sağdan</div>
+        </div>
+
+        <!-- Logo 21 - Parçacık -->
+        <div class="logo-card">
+            <div class="logo-number">Logo #21</div>
+            <div class="logo-container" id="logo21">
+                <span class="g-text-anim" style="animation-delay: 0.2s;">G</span>
+                <span class="s-text-anim" style="animation-delay: 0.2s;">S</span>
+            </div>
+            <div class="logo-name">Parçacık Efekti</div>
+            <div class="logo-desc">Parçacıklarla belirir</div>
+        </div>
+
+        <!-- Logo 22 - Lazer -->
+        <div class="logo-card">
+            <div class="logo-number">Logo #22</div>
+            <div class="logo-container" id="logo22">
+                <div class="laser-g"></div>
+                <div class="laser-s"></div>
+                <span class="laser-text-g">G</span>
+                <span class="laser-text-s">S</span>
+            </div>
+            <div class="logo-name">Lazer Efekti</div>
+            <div class="logo-desc">Lazerler çarpışır, GS belirir</div>
+        </div>
+    </div>
+
+    <button class="replay-all" onclick="replayAll()">🔄 Tüm Animasyonları Tekrar Oynat</button>
+
+    <div class="instructions">
+        <h3>💡 Seçim Yapın</h3>
+        <p>Beğendiğiniz logo numarasını söyleyin (örn: "Logo 17" veya "Logo 22")<br>Seçtiğiniz logo uygulamaya eklenecek!</p>
+    </div>
+
+    <script>
+        function replayAll() {
+            // Tüm animasyonlu containerları yeniden yükle
+            const containers = ['logo17', 'logo18', 'logo19', 'logo20', 'logo21', 'logo22'];
+            containers.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.innerHTML = el.innerHTML;
+                }
+            });
+        }
+        
+        // Her 5 saniyede bir otomatik replay
+        setInterval(replayAll, 6000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 3 - Hexagon</title>
+    <style>
+        body { 
+            background: #1a1a2e; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border: 3px solid rgba(76, 175, 80, 0.4);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Logo 3 - Altıgen GAME</h2>
+    <div class="logo-container">
+        <svg width="85" height="85" viewBox="0 0 85 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Dış Altıgen -->
+            <path d="M42.5 5L75 22.5V60L42.5 77.5L10 60V22.5L42.5 5Z" 
+                  fill="none" stroke="url(#hexGrad)" stroke-width="3"/>
+            <!-- İç Altıgen -->
+            <path d="M42.5 15L65 27.5V52.5L42.5 65L20 52.5V27.5L42.5 15Z" 
+                  fill="url(#innerHexGrad)" stroke="#4CAF50" stroke-width="1"/>
+            <!-- G Harfi - Stilize -->
+            <path d="M32 52V33C32 30 34 28 37 28H48V32H37V52H52V42H44V38H56V52C56 55 54 57 51 57H37C34 57 32 55 32 52Z" 
+                  fill="url(#letterGrad)"/>
+            <defs>
+                <linearGradient id="hexGrad" x1="10" y1="5" x2="75" y2="77">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="50%" stop-color="#2196F3"/>
+                    <stop offset="100%" stop-color="#4CAF50"/>
+                </linearGradient>
+                <linearGradient id="innerHexGrad" x1="20" y1="15" x2="65" y2="65">
+                    <stop offset="0%" stop-color="#1a2a2e"/>
+                    <stop offset="100%" stop-color="#0f1a1e"/>
+                </linearGradient>
+                <linearGradient id="letterGrad" x1="32" y1="28" x2="56" y2="57">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="100%" stop-color="#81C784"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <p class="description">Altıgen çerçeve içinde "G" harfi<br>Neon yeşil-mavi gradyan</p>
+</body>
+</html>

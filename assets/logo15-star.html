@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 15 - Star Badge</title>
+    <style>
+        body { background: #1a1a2e; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container { width: 120px; height: 120px; border-radius: 28px; background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%); border: 3px solid rgba(76, 175, 80, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3); display: flex; align-items: center; justify-content: center; }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Logo 15 - Yıldız Rozet</h2>
+    <div class="logo-container">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Büyük Yıldız -->
+            <path d="M40 5L47 27L70 27L52 42L58 65L40 52L22 65L28 42L10 27L33 27Z" 
+                  fill="url(#starGrad15)" stroke="#FFD700" stroke-width="2"/>
+            <!-- İç Daire -->
+            <circle cx="40" cy="38" r="14" fill="url(#innerCircle15)" stroke="#4CAF50" stroke-width="2"/>
+            <!-- GS Yazısı -->
+            <text x="40" y="43" text-anchor="middle" font-family="Arial Black" font-size="14" fill="#fff">GS</text>
+            <!-- Parıltılar -->
+            <circle cx="47" cy="15" r="2" fill="#fff" opacity="0.8"/>
+            <circle cx="62" cy="30" r="1.5" fill="#fff" opacity="0.6"/>
+            <defs>
+                <linearGradient id="starGrad15" x1="10" y1="5" x2="70" y2="65">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="50%" stop-color="#2E7D32"/>
+                    <stop offset="100%" stop-color="#1B5E20"/>
+                </linearGradient>
+                <linearGradient id="innerCircle15" x1="26" y1="24" x2="54" y2="52">
+                    <stop offset="0%" stop-color="#2E7D32"/>
+                    <stop offset="100%" stop-color="#1B5E20"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <p class="description">5 köşeli yıldız rozet<br>GS merkez yazısı</p>
+</body>
+</html>
