@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Game Store</title>
+    <title>BestOfShop</title>
     <!-- Firebase SDK - async yükleme -->
     <script>
         window.onerror = function(msg, url, line, col, error) {
@@ -60,7 +60,7 @@
         padding-right: env(safe-area-inset-right, 0px);
     }
     
-    /* 🏪 Game Store - Hile Mağazası Teması */
+    /* 🏪 BestOfShop - Hile Mağazası Teması */
     .animated-bg {
         position: fixed;
         top: 0;
@@ -72,7 +72,7 @@
         background: linear-gradient(135deg, #0a0a0f 0%, #12121a 50%, #0a0a0f 100%);
     }
     
-    /* Kayan GAME STORE Yazıları - Daha Belirgin */
+    /* Kayan BestOfShop Yazıları - Daha Belirgin */
     .text-banner {
         position: absolute;
         width: 200%;
@@ -327,7 +327,7 @@
         pointer-events: none;
     }
     
-    /* Game Store Logo - Lazer Animasyonu */
+    /* BestOfShop Logo - Lazer Animasyonu */
     .app-logo-container {
         width: 90px;
         height: 90px;
@@ -691,17 +691,17 @@
 
 <body>
 
-<!-- 🏪 GAME STORE - HİLE MAĞAZASI ARKA PLAN -->
+<!-- 🏪 BestOfShop - HİLE MAĞAZASI ARKA PLAN -->
 <div class="animated-bg">
-    <!-- Kayan GAME STORE Yazıları -->
-    <div class="text-banner text-banner-1">GAME STORE • GAME STORE • GAME STORE • GAME STORE • GAME STORE • GAME STORE • </div>
-    <div class="text-banner text-banner-2">GAME STORE • GAME STORE • GAME STORE • GAME STORE • GAME STORE • GAME STORE • </div>
-    <div class="text-banner text-banner-3">GAME STORE • GAME STORE • GAME STORE • GAME STORE • GAME STORE • GAME STORE • </div>
-    <div class="text-banner text-banner-4">GAME STORE • GAME STORE • GAME STORE • GAME STORE • GAME STORE • GAME STORE • </div>
+    <!-- Kayan BestOfShop Yazıları -->
+    <div class="text-banner text-banner-1">BestOfShop • BestOfShop • BestOfShop • BestOfShop • BestOfShop • BestOfShop • </div>
+    <div class="text-banner text-banner-2">BestOfShop • BestOfShop • BestOfShop • BestOfShop • BestOfShop • BestOfShop • </div>
+    <div class="text-banner text-banner-3">BestOfShop • BestOfShop • BestOfShop • BestOfShop • BestOfShop • BestOfShop • </div>
+    <div class="text-banner text-banner-4">BestOfShop • BestOfShop • BestOfShop • BestOfShop • BestOfShop • BestOfShop • </div>
     
     <!-- Dikey Kayan Yazılar -->
-    <div class="text-vertical text-vertical-1">GAME STORE GAME STORE GAME STORE</div>
-    <div class="text-vertical text-vertical-2">GAME STORE GAME STORE GAME STORE</div>
+    <div class="text-vertical text-vertical-1">BestOfShop BestOfShop BestOfShop</div>
+    <div class="text-vertical text-vertical-2">BestOfShop BestOfShop BestOfShop</div>
     
     <!-- Parlayan Köşeler -->
     <div class="corner-glow corner-glow-1"></div>
@@ -2052,7 +2052,7 @@
 <div class="page active" id="homePage">
 <div class="container" style="padding-top: 70px;">
     <div class="header">
-        <!-- Game Store SVG Logo - Lazer Animasyonu -->
+        <!-- BestOfShop SVG Logo - Lazer Animasyonu -->
         <div class="app-logo-container">
             <div class="app-logo-svg">
                 <div class="laser-g"></div>
@@ -2062,7 +2062,7 @@
                 <span class="logo-letter-s">S</span>
             </div>
         </div>
-        <h1 class="title">Game Store</h1>
+        <h1 class="title">BestOfShop</h1>
         <p class="subtitle">Oyun Modları & Kurulum Rehberleri</p>
         <p class="version">Sürüm: <span id="currentVersion">3.14.9</span></p>
     </div>
@@ -2729,7 +2729,7 @@
         playStoreUrl: 'https://play.google.com/store/apps/details?id=com.mobile.legends'
     };
     
-    const APP_VERSION = '3.14.58';
+    const APP_VERSION = '3.10.7';
     function toggleProfilePanel() {
         const sidebar = document.getElementById('profileSidebar');
         const overlay = document.getElementById('profileOverlay');
@@ -3866,7 +3866,7 @@
                     // Genel bildirim kanalı
                     await LocalNotifications.createChannel({
                         id: 'default',
-                        name: 'Game Store Bildirimleri',
+                        name: 'BestOfShop Bildirimleri',
                         description: 'Genel bildirimler',
                         importance: 4, // HIGH
                         visibility: 1, // PUBLIC
@@ -4478,11 +4478,11 @@
     // Varsayılan ayarlar
     const defaultAppSettings = {
         general: {
-            appName: 'Game Store',
+            appName: 'BestOfShop',
             appSubtitle: 'Oyun Modları & Kurulum Rehberleri',
             logoUrl: '',
             iconUrl: '',
-            footerText: '© 2025 Game Store. Tüm hakları saklıdır.'
+            footerText: '© 2025 BestOfShop. Tüm hakları saklıdır.'
         },
         theme: {
             primaryColor: '#4CAF50',
@@ -4518,10 +4518,10 @@
             estimatedTime: ''
         },
         texts: {
-            homeTitle: 'Game Store',
+            homeTitle: 'BestOfShop',
             homeSubtitle: 'Oyun Modları & Kurulum Rehberleri',
             welcomeMessage: 'Hoş Geldiniz!',
-            footerText: '© 2025 Game Store'
+            footerText: '© 2025 BestOfShop'
         },
         update: {
             currentVersion: APP_VERSION,
@@ -11168,7 +11168,7 @@
             
             // Hoşgeldin mesajı - HER ZAMAN APP_VERSION kullan
             setTimeout(() => {
-                showToast('✅ Game Store v' + APP_VERSION);
+                showToast('✅ BestOfShop v' + APP_VERSION);
             }, 1000);
             
             // Otomatik güncelleme kontrolü başlat (30 saniyede bir)
@@ -12740,4 +12740,5 @@ function openFloatingSupport() {
 
 </body>
 </html>
+
 
