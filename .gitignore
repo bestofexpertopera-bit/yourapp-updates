@@ -1,0 +1,17 @@
+﻿# Build klasörleri
+kaynak-kodlar/capacitor-app/android/app/build/
+kaynak-kodlar/capacitor-app/android/build/
+kaynak-kodlar/capacitor-app/android/capacitor-cordova-android-plugins/
+kaynak-kodlar/capacitor-app/android/.gradle/
+kaynak-kodlar/capacitor-app/node_modules/
+
+# Gradle dosyaları
+*.gradle
+!kaynak-kodlar/capacitor-app/android/build.gradle
+!kaynak-kodlar/capacitor-app/android/app/build.gradle
+!kaynak-kodlar/capacitor-app/android/variables.gradle
+!kaynak-kodlar/capacitor-app/android/settings.gradle
+local.properties
+
+# Backup dosyaları
+*.bak

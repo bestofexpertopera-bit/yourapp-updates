@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -94,33 +94,33 @@
     <div class="loader" id="loader">
         <div class="spinner"></div>
         <div class="loader-text">BestOfShop</div>
-        <div class="loader-version" id="loaderStatus">Güncelleme kontrol ediliyor...</div>
+        <div class="loader-version" id="loaderStatus">GÃ¼ncelleme kontrol ediliyor...</div>
     </div>
     
     <div class="update-box" id="updateBox">
-        <h3>🎉 Yeni Güncelleme!</h3>
-        <p id="updateMessage">Yeni bir sürüm mevcut</p>
-        <div class="version-info" id="versionInfo">v1.0.0 → v1.0.1</div>
+        <h3>ğŸ‰ Yeni GÃ¼ncelleme!</h3>
+        <p id="updateMessage">Yeni bir sÃ¼rÃ¼m mevcut</p>
+        <div class="version-info" id="versionInfo">v1.0.0 â†’ v1.0.1</div>
         <div class="changelog" id="changelog"></div>
-        <button class="update-btn" onclick="downloadUpdate()">📥 Güncelle</button>
+        <button class="update-btn" onclick="downloadUpdate()">ğŸ“¥ GÃ¼ncelle</button>
         <button class="skip-btn" onclick="skipUpdate()">Sonra</button>
     </div>
     
     <div class="error-box" id="errorBox">
-        <h3>⚠️ Bağlantı Hatası</h3>
-        <p id="errorMessage">Sunucuya bağlanılamadı</p>
-        <button class="retry-btn" onclick="checkForUpdates()">🔄 Tekrar Dene</button>
-        <button class="skip-btn" onclick="loadCachedApp()" style="margin-top:10px;">📦 Çevrimdışı Aç</button>
+        <h3>âš ï¸ BaÄŸlantÄ± HatasÄ±</h3>
+        <p id="errorMessage">Sunucuya baÄŸlanÄ±lamadÄ±</p>
+        <button class="retry-btn" onclick="checkForUpdates()">ğŸ”„ Tekrar Dene</button>
+        <button class="skip-btn" onclick="loadCachedApp()" style="margin-top:10px;">ğŸ“¦ Ã‡evrimdÄ±ÅŸÄ± AÃ§</button>
     </div>
     
     <div class="debug-info" id="debugInfo"></div>
 
     <script>
-        var GITHUB_BASE = 'https://github.com/bestofexpertopera-bit/yourapp-updates.git';
+        var GITHUB_BASE = 'https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/';
         var CACHE_KEY = 'ota_app_html';
         var VERSION_KEY = 'ota_app_version';
         var MANIFEST_KEY = 'ota_manifest';
-        var BUNDLED_VERSION = '3.12.6'; // APK içindeki sürüm
+        var BUNDLED_VERSION = '3.10.7'; // APK iÃ§indeki sÃ¼rÃ¼m
         
         var currentManifest = null;
         var cachedVersion = null;
@@ -148,8 +148,8 @@
             document.getElementById('errorBox').style.display = 'none';
             
             var current = getCachedVersion() || BUNDLED_VERSION;
-            document.getElementById('versionInfo').textContent = 'v' + current + ' → v' + manifest.version;
-            document.getElementById('updateMessage').textContent = 'Yeni özellikler ve düzeltmeler mevcut!';
+            document.getElementById('versionInfo').textContent = 'v' + current + ' â†’ v' + manifest.version;
+            document.getElementById('updateMessage').textContent = 'Yeni Ã¶zellikler ve dÃ¼zeltmeler mevcut!';
             
             var changelogEl = document.getElementById('changelog');
             if (manifest.changelog && manifest.changelog.length > 0) {
@@ -199,19 +199,19 @@
                 localStorage.setItem(VERSION_KEY, version);
                 log('Cache kaydedildi: v' + version);
             } catch(e) {
-                log('Cache kaydetme hatası: ' + e.message);
+                log('Cache kaydetme hatasÄ±: ' + e.message);
             }
         }
         
         function loadApp(html) {
-            log('Uygulama yükleniyor...');
+            log('Uygulama yÃ¼kleniyor...');
             setTimeout(function() {
                 try {
                     document.open();
                     document.write(html);
                     document.close();
                 } catch(e) {
-                    log('Document write hatası, reload yapılıyor...');
+                    log('Document write hatasÄ±, reload yapÄ±lÄ±yor...');
                     window.location.reload(true);
                 }
             }, 100);
@@ -221,19 +221,19 @@
             var cached = getCachedApp();
             var cachedVer = getCachedVersion();
             if (cached && cachedVer) {
-                log('Cache yükleniyor: v' + cachedVer);
-                // Önce cache'den yükle
+                log('Cache yÃ¼kleniyor: v' + cachedVer);
+                // Ã–nce cache'den yÃ¼kle
                 try {
                     document.open();
                     document.write(cached);
                     document.close();
                 } catch(e) {
-                    log('Cache yükleme hatası, yerel dosya açılıyor...');
+                    log('Cache yÃ¼kleme hatasÄ±, yerel dosya aÃ§Ä±lÄ±yor...');
                     window.location.href = 'app.html';
                 }
             } else {
-                // Cache yoksa bundled app.html'i yükle
-                log('Yerel uygulama yükleniyor...');
+                // Cache yoksa bundled app.html'i yÃ¼kle
+                log('Yerel uygulama yÃ¼kleniyor...');
                 window.location.href = 'app.html';
             }
         }
@@ -260,42 +260,42 @@
         
         async function checkForUpdates() {
             showLoader();
-            status('Güncelleme kontrol ediliyor...');
+            status('GÃ¼ncelleme kontrol ediliyor...');
             log('Manifest kontrol ediliyor...');
             
             try {
-                // Manifest'i çek
+                // Manifest'i Ã§ek
                 var manifestText = await fetchWithTimeout(GITHUB_BASE + 'manifest.json', 10000);
                 currentManifest = JSON.parse(manifestText);
-                log('Manifest alındı: v' + currentManifest.version);
+                log('Manifest alÄ±ndÄ±: v' + currentManifest.version);
                 
-                // Mevcut sürümü al
+                // Mevcut sÃ¼rÃ¼mÃ¼ al
                 var currentVersion = getCachedVersion() || BUNDLED_VERSION;
-                log('Mevcut sürüm: v' + currentVersion);
+                log('Mevcut sÃ¼rÃ¼m: v' + currentVersion);
                 
-                // Sürüm karşılaştır
+                // SÃ¼rÃ¼m karÅŸÄ±laÅŸtÄ±r
                 if (compareVersions(currentManifest.version, currentVersion) > 0) {
-                    // Yeni sürüm var
-                    log('Yeni sürüm mevcut: v' + currentManifest.version);
+                    // Yeni sÃ¼rÃ¼m var
+                    log('Yeni sÃ¼rÃ¼m mevcut: v' + currentManifest.version);
                     showUpdateBox(currentManifest);
                 } else {
-                    // Güncel, direkt yükle
-                    log('Uygulama güncel');
-                    status('Uygulama başlatılıyor...');
+                    // GÃ¼ncel, direkt yÃ¼kle
+                    log('Uygulama gÃ¼ncel');
+                    status('Uygulama baÅŸlatÄ±lÄ±yor...');
                     loadCachedApp();
                 }
             } catch(e) {
-                log('Manifest hatası: ' + e.message);
+                log('Manifest hatasÄ±: ' + e.message);
                 
-                // İnternet yok, cache veya bundled'ı yükle
+                // Ä°nternet yok, cache veya bundled'Ä± yÃ¼kle
                 var cached = getCachedApp();
                 if (cached) {
-                    log('Çevrimdışı mod - cache yükleniyor');
-                    status('Çevrimdışı mod...');
+                    log('Ã‡evrimdÄ±ÅŸÄ± mod - cache yÃ¼kleniyor');
+                    status('Ã‡evrimdÄ±ÅŸÄ± mod...');
                     setTimeout(function() { loadCachedApp(); }, 500);
                 } else {
-                    log('Çevrimdışı mod - yerel yükleniyor');
-                    status('Yerel uygulama başlatılıyor...');
+                    log('Ã‡evrimdÄ±ÅŸÄ± mod - yerel yÃ¼kleniyor');
+                    status('Yerel uygulama baÅŸlatÄ±lÄ±yor...');
                     setTimeout(function() { window.location.href = 'app.html'; }, 500);
                 }
             }
@@ -305,42 +305,42 @@
             if (!currentManifest) return;
             
             showLoader();
-            status('Güncelleme indiriliyor...');
+            status('GÃ¼ncelleme indiriliyor...');
             log('app.html indiriliyor...');
             
             try {
                 var html = await fetchWithTimeout(GITHUB_BASE + 'app.html', 30000);
                 
-                // İçerik kontrolü
+                // Ä°Ã§erik kontrolÃ¼
                 if (html.length < 5000 || html.indexOf('APP_VERSION') === -1) {
-                    throw new Error('Geçersiz içerik');
+                    throw new Error('GeÃ§ersiz iÃ§erik');
                 }
                 
-                // Sürüm kontrolü
+                // SÃ¼rÃ¼m kontrolÃ¼
                 var match = html.match(/APP_VERSION\s*=\s*['"]([^'"]+)['"]/);
                 var downloadedVersion = match ? match[1] : currentManifest.version;
                 
-                log('İndirildi: v' + downloadedVersion);
-                status('Güncelleme yükleniyor...');
+                log('Ä°ndirildi: v' + downloadedVersion);
+                status('GÃ¼ncelleme yÃ¼kleniyor...');
                 
                 // Cache'e kaydet
                 setCachedApp(html, downloadedVersion);
                 
-                // Yükle
+                // YÃ¼kle
                 setTimeout(function() { loadApp(html); }, 500);
                 
             } catch(e) {
-                log('İndirme hatası: ' + e.message);
-                showError('Güncelleme indirilemedi: ' + e.message);
+                log('Ä°ndirme hatasÄ±: ' + e.message);
+                showError('GÃ¼ncelleme indirilemedi: ' + e.message);
             }
         }
         
         function skipUpdate() {
-            log('Güncelleme atlandı');
+            log('GÃ¼ncelleme atlandÄ±');
             loadCachedApp();
         }
         
-        // Başlat
+        // BaÅŸlat
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', checkForUpdates);
         } else {
@@ -349,6 +349,7 @@
     </script>
 </body>
 </html>
+
 
 
 

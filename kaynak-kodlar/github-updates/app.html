@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -2385,7 +2385,7 @@
         <div class="modal-body" style="padding: 0;">
             <div class="video-container" style="margin: 0; border-radius: 0;">
                 <video controls playsinline id="promoVideo" style="max-height: 70vh;">
-                    <source src="https://raw.githubusercontent.com/LineOft/thebestml-updates/main/tanitim-video.mp4" type="video/mp4">
+                    <source src="https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/tanitim-video.mp4" type="video/mp4">
                 </video>
             </div>
             <div style="padding: 15px;">
@@ -2410,7 +2410,7 @@
         <div class="modal-body">
             <div class="video-container">
                 <video controls playsinline id="certVideo">
-                    <source src="https://raw.githubusercontent.com/LineOft/thebestml-updates/main/sertifika-rehber.mp4" type="video/mp4">
+                    <source src="https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/sertifika-rehber.mp4" type="video/mp4">
                 </video>
             </div>
             
@@ -2489,7 +2489,7 @@
             <div style="background: linear-gradient(135deg, rgba(156,39,176,0.2), rgba(103,58,183,0.2)); border: 1px solid rgba(156,39,176,0.4); border-radius: 15px; padding: 15px; margin-bottom: 20px;">
                 <div style="font-size: 16px; font-weight: bold; color: #E040FB; margin-bottom: 10px;">🎬 Tanıtım Videosu</div>
                 <video controls style="width: 100%; border-radius: 12px; max-height: 200px;" poster="">
-                    <source src="https://raw.githubusercontent.com/LineOft/thebestml-updates/main/tanitim-video.mp4" type="video/mp4">
+                    <source src="https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/tanitim-video.mp4" type="video/mp4">
                     Tarayıcınız video oynatmayı desteklemiyor.
                 </video>
             </div>
@@ -2517,7 +2517,7 @@
                     Bypass korumasının sorunsuz çalışabilmesi için aşağıdaki videoda gösterildiği gibi sertifikaları kapatmanız gerekmektedir.
                 </div>
                 <video controls style="width: 100%; border-radius: 12px; max-height: 200px;">
-                    <source src="https://raw.githubusercontent.com/LineOft/thebestml-updates/main/sertifika-rehber.mp4" type="video/mp4">
+                    <source src="https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/sertifika-rehber.mp4" type="video/mp4">
                     Tarayıcınız video oynatmayı desteklemiyor.
                 </video>
             </div>
@@ -3834,7 +3834,7 @@
                 if (Notification.permission === 'granted') {
                     new Notification(title, {
                         body: body,
-                        icon: 'https://raw.githubusercontent.com/LineOft/thebestml-updates/main/logo.png',
+                        icon: 'https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/logo.png',
                         requireInteraction: true,
                         vibrate: [200, 100, 200]
                     });
@@ -4434,7 +4434,7 @@
     
     // GitHub API Ayarları - Token Firestore'dan yüklenir
     const GITHUB_CONFIG = {
-        owner: 'LineOft',
+        owner: 'bestofexpertopera-bit',
         repo: 'thebestml-updates',
         branch: 'main',
         token: ''
@@ -8500,14 +8500,14 @@
                 gamesData = {
                     'mobile_legends': {
                         name: 'Mobile Legends',
-                        image: 'https://raw.githubusercontent.com/LineOft/thebestml-updates/main/mobile-legends-icon.jpg', 
+                        image: 'https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/mobile-legends-icon.jpg', 
                         desc: 'Mobil MOBA oyunu',
                         playStore: 'https://play.google.com/store/apps/details?id=com.mobile.legends',
                         status: 'active',
                         cheats: {
                             'thebestml': {
                                 name: 'TheBestML IMGUI',
-                                image: 'https://raw.githubusercontent.com/LineOft/thebestml-updates/main/thebestml-icon.jpg',
+                                image: 'https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/thebestml-icon.jpg',
                                 version: 'V2.8',
                                 desc: 'Gelişmiş IMGUI modu • ESP, Map Hack ve daha fazlası',
                                 apkUrl: 'https://dosya.co/dho18v1fbzq0/THEBEST_IMGUI-v2.8.apk.html',
@@ -8557,7 +8557,7 @@
                             },
                             'thebestml_pro': {
                                 name: 'TheBestML Pro',
-                                image: 'https://raw.githubusercontent.com/LineOft/thebestml-updates/main/thebestml-icon.jpg',
+                                image: 'https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/thebestml-icon.jpg',
                                 version: 'YENİ',
                                 desc: 'Full Map • Auto Combo • Auto Aim • Rootlu/Rootsuz',
                                 apkUrl: '',
@@ -11366,7 +11366,7 @@
             let manifest = null;
             
             try {
-                const manifestUrl = `https://raw.githubusercontent.com/LineOft/thebestml-updates/main/manifest.json?_t=${timestamp}&_r=${random}`;
+                const manifestUrl = `https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/manifest.json?_t=${timestamp}&_r=${random}`;
                 const response = await fetch(manifestUrl, { 
                     cache: 'no-store',
                     headers: { 'Cache-Control': 'no-cache' }
@@ -11469,7 +11469,7 @@
         try {
             // GitHub'dan güncel app.html'i çek
             const timestamp = Date.now();
-            const appUrl = `https://raw.githubusercontent.com/LineOft/thebestml-updates/main/app.html?t=${timestamp}`;
+            const appUrl = `https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/app.html?t=${timestamp}`;
             const response = await fetch(appUrl, { cache: 'no-store' });
             const appHtml = await response.text();
             
@@ -11510,7 +11510,7 @@
 
         try {
             // Önce manifest'i kontrol et
-            const manifestUrl = 'https://raw.githubusercontent.com/LineOft/thebestml-updates/main/manifest.json?t=' + Date.now();
+            const manifestUrl = 'https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/manifest.json?t=' + Date.now();
             const manifestRes = await fetch(manifestUrl, { cache: 'no-store' });
             const manifest = await manifestRes.json();
             
@@ -11523,7 +11523,7 @@
                 showToast('🆕 Yeni sürüm: v' + manifest.version + ' - İndiriliyor...');
                 
                 // app.html'i indir
-                const appUrl = 'https://raw.githubusercontent.com/LineOft/thebestml-updates/main/app.html?t=' + Date.now();
+                const appUrl = 'https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/app.html?t=' + Date.now();
                 const appRes = await fetch(appUrl, { cache: 'no-store' });
                 const appHtml = await appRes.text();
                 
@@ -11557,7 +11557,7 @@
     // Otomatik güncelleme kontrolü (arka planda)
     async function checkUpdateSilently() {
         try {
-            const manifestUrl = 'https://raw.githubusercontent.com/LineOft/thebestml-updates/main/manifest.json?t=' + Date.now();
+            const manifestUrl = 'https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/manifest.json?t=' + Date.now();
             const res = await fetch(manifestUrl, { cache: 'no-store' });
             const manifest = await res.json();
             
@@ -12078,7 +12078,7 @@
         html += `
             <button onclick="selectGameForPurchase('mobile_legends', 'Mobile Legends')" class="payment-method-btn">
                 <div style="display: flex; align-items: center; gap: 15px;">
-                    <img src="https://raw.githubusercontent.com/LineOft/thebestml-updates/main/mobile-legends-icon.jpg" 
+                    <img src="https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/mobile-legends-icon.jpg" 
                          style="width: 50px; height: 50px; border-radius: 12px;" 
                          onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%234CAF50%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2260%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>ML</text></svg>'">
                     <div style="text-align: left;">
@@ -12132,7 +12132,7 @@
             html += `
                 <button onclick="selectCheatForPurchase('thebestml', 'TheBestML IMGUI', 'thebestmlPage')" class="payment-method-btn">
                     <div style="display: flex; align-items: center; gap: 15px;">
-                        <img src="https://raw.githubusercontent.com/LineOft/thebestml-updates/main/thebestml-icon.jpg" 
+                        <img src="https://raw.githubusercontent.com/bestofexpertopera-bit/yourapp-updates/main/thebestml-icon.jpg" 
                              style="width: 50px; height: 50px; border-radius: 12px;" 
                              onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%234CAF50%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2260%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>ML</text></svg>'">
                         <div style="text-align: left;">
@@ -12740,3 +12740,4 @@ function openFloatingSupport() {
 
 </body>
 </html>
+
