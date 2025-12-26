@@ -2,20 +2,21 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>BestOfShop</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-            background: #0a0a12;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+            background: #0a0a12; 
             min-height: 100vh; 
             color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .loader { text-align: center; }
+        .loader { text-align: center; padding: 20px; }
         .spinner {
             width: 50px; height: 50px;
             border: 4px solid rgba(255,255,255,0.1);
@@ -25,19 +26,52 @@
             margin: 0 auto 20px;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
-        .text { color: #4CAF50; font-size: 18px; }
+        .text { font-size: 18px; color: #4CAF50; margin-bottom: 10px; }
+        .status { font-size: 12px; color: #888; }
+        .error { color: #f44; font-size: 12px; margin-top: 20px; max-width: 300px; word-break: break-all; }
     </style>
 </head>
 <body>
     <div class="loader">
         <div class="spinner"></div>
         <div class="text">BestOfShop</div>
+        <div class="status" id="status">Yükleniyor...</div>
+        <div class="error" id="error"></div>
     </div>
     <script>
-        // Direkt app.html'e yonlendir
-        setTimeout(function() {
-            window.location.href = 'app.html';
-        }, 500);
+        var TIMEOUT = 5000; // 5 saniye timeout
+        
+        function showError(msg) {
+            document.getElementById('error').textContent = msg;
+        }
+        
+        function showStatus(msg) {
+            document.getElementById('status').textContent = msg;
+        }
+        
+        function loadApp() {
+            showStatus('Uygulama açılıyor...');
+            try {
+                window.location.href = 'app.html';
+            } catch(e) {
+                showError('Yönlendirme hatası: ' + e.message);
+            }
+        }
+        
+        // Timeout ile direkt app.html'e git
+        var loadTimer = setTimeout(function() {
+            loadApp();
+        }, 1000);
+        
+        // Sayfa yüklendiğinde
+        if (document.readyState === 'complete') {
+            loadApp();
+        } else {
+            window.onload = function() {
+                clearTimeout(loadTimer);
+                loadApp();
+            };
+        }
     </script>
 </body>
 </html>
