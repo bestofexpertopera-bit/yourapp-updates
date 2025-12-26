@@ -1,7 +1,7 @@
 {
-  "version": 4,
+  "version": 5,
   "key": "TEST123",
-  "apkUrl": "https://github.com/bestofexpertopera-bit/yourapp-updates/releases/download/v3.10.5/app-release.apk",
+  "apkUrl": "https://github.com/bestofexpertopera-bit/yourapp-updates/releases/download/v3.10.6/app-release.apk",
   "playStoreUrl": "",
   "announcement": "CONFIG DEGISTI",
   "maintenanceMode": false
