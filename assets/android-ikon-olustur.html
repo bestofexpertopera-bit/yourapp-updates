@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Android İkon Oluşturucu - Logo 22</title>
+    <style>
+        body { 
+            background: #1a1a2e; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding: 30px;
+            font-family: Arial, sans-serif; 
+            color: #fff;
+        }
+        h1 { color: #4CAF50; margin-bottom: 10px; }
+        .subtitle { color: #888; margin-bottom: 30px; }
+        .icon-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 30px; }
+        .icon-item { text-align: center; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; }
+        .icon-label { margin-top: 10px; font-size: 12px; color: #aaa; }
+        .icon-size { font-size: 10px; color: #666; }
+        canvas { border-radius: 20%; background: #0a0a12; }
+        .btn {
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            border: none;
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px;
+        }
+        .btn:hover { transform: scale(1.05); }
+        .btn.secondary { background: #333; }
+        .instructions { 
+            background: rgba(76, 175, 80, 0.1); 
+            padding: 20px; 
+            border-radius: 15px; 
+            margin: 30px 0;
+            max-width: 800px;
+            text-align: left;
+        }
+        .instructions h3 { color: #4CAF50; margin-bottom: 15px; }
+        .instructions ol { padding-left: 20px; line-height: 1.8; }
+        .instructions code { background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 4px; }
+        .progress { margin: 20px 0; padding: 15px; background: rgba(33, 150, 243, 0.2); border-radius: 10px; display: none; }
+    </style>
+</head>
+<body>
+    <h1>🎮 Android İkon Oluşturucu</h1>
+    <p class="subtitle">Logo 22 - Lazer GS</p>
+
+    <div class="icon-grid" id="iconGrid"></div>
+
+    <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+        <button class="btn" onclick="downloadAllIcons()">📥 Tüm İkonları İndir</button>
+        <button class="btn secondary" onclick="downloadForeground()">🎨 Foreground İndir</button>
+    </div>
+
+    <div class="progress" id="progress">⏳ İndiriliyor...</div>
+
+    <div class="instructions">
+        <h3>📱 Kurulum Adımları</h3>
+        <ol>
+            <li><strong>Tüm İkonları İndir</strong> butonuna tıklayın</li>
+            <li>İndirilen dosyaları şu klasörlere kopyalayın:
+                <ul>
+                    <li><code>ic_launcher_48.png</code> → <code>mipmap-mdpi/ic_launcher.png</code></li>
+                    <li><code>ic_launcher_72.png</code> → <code>mipmap-hdpi/ic_launcher.png</code></li>
+                    <li><code>ic_launcher_96.png</code> → <code>mipmap-xhdpi/ic_launcher.png</code></li>
+                    <li><code>ic_launcher_144.png</code> → <code>mipmap-xxhdpi/ic_launcher.png</code></li>
+                    <li><code>ic_launcher_192.png</code> → <code>mipmap-xxxhdpi/ic_launcher.png</code></li>
+                </ul>
+            </li>
+            <li>Aynı dosyaları <code>ic_launcher_round.png</code> olarak da kopyalayın</li>
+            <li>APK'yı yeniden derleyin</li>
+        </ol>
+    </div>
+
+    <script>
+        const sizes = [
+            { name: 'mdpi', size: 48 },
+            { name: 'hdpi', size: 72 },
+            { name: 'xhdpi', size: 96 },
+            { name: 'xxhdpi', size: 144 },
+            { name: 'xxxhdpi', size: 192 },
+            { name: 'playstore', size: 512 }
+        ];
+
+        const foregroundSizes = [
+            { name: 'mdpi', size: 108 },
+            { name: 'hdpi', size: 162 },
+            { name: 'xhdpi', size: 216 },
+            { name: 'xxhdpi', size: 324 },
+            { name: 'xxxhdpi', size: 432 }
+        ];
+
+        function drawIcon(canvas, size, isRound = false, isForeground = false) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = size;
+            canvas.height = size;
+            
+            const scale = size / 192;
+            const padding = isForeground ? size * 0.18 : 0;
+            const iconSize = size - (padding * 2);
+            
+            // Arka plan
+            if (!isForeground) {
+                const bgGrad = ctx.createLinearGradient(0, 0, size, size);
+                bgGrad.addColorStop(0, '#1a1a2e');
+                bgGrad.addColorStop(1, '#0f0f1a');
+                
+                if (isRound) {
+                    ctx.beginPath();
+                    ctx.arc(size/2, size/2, size/2, 0, Math.PI * 2);
+                    ctx.fillStyle = bgGrad;
+                    ctx.fill();
+                } else {
+                    const radius = size * 0.22;
+                    ctx.beginPath();
+                    ctx.roundRect(0, 0, size, size, radius);
+                    ctx.fillStyle = bgGrad;
+                    ctx.fill();
+                }
+                
+                // Border
+                ctx.strokeStyle = 'rgba(76, 175, 80, 0.5)';
+                ctx.lineWidth = Math.max(2, size * 0.02);
+                ctx.stroke();
+            }
+            
+            // G ve S harfleri
+            const fontSize = isForeground ? iconSize * 0.35 : size * 0.38;
+            ctx.font = `900 ${fontSize}px Arial Black, sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            const centerY = size / 2;
+            const offsetX = isForeground ? size * 0.17 : size * 0.18;
+            
+            // G Glow
+            ctx.shadowColor = '#4CAF50';
+            ctx.shadowBlur = size * 0.1;
+            ctx.fillStyle = '#4CAF50';
+            ctx.fillText('G', size/2 - offsetX, centerY);
+            
+            // S Glow
+            ctx.shadowColor = '#2196F3';
+            ctx.shadowBlur = size * 0.1;
+            ctx.fillStyle = '#2196F3';
+            ctx.fillText('S', size/2 + offsetX, centerY);
+            
+            // Merkez parlama
+            ctx.shadowBlur = 0;
+            const glowSize = size * 0.08;
+            const centerGlow = ctx.createRadialGradient(size/2, centerY, 0, size/2, centerY, glowSize);
+            centerGlow.addColorStop(0, 'rgba(255, 255, 255, 0.4)');
+            centerGlow.addColorStop(1, 'transparent');
+            ctx.fillStyle = centerGlow;
+            ctx.beginPath();
+            ctx.arc(size/2, centerY, glowSize, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // İkon grid oluştur
+        const grid = document.getElementById('iconGrid');
+        sizes.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'icon-item';
+            
+            const canvas = document.createElement('canvas');
+            canvas.id = `icon_${item.size}`;
+            canvas.style.width = Math.min(item.size, 150) + 'px';
+            canvas.style.height = Math.min(item.size, 150) + 'px';
+            
+            drawIcon(canvas, item.size);
+            
+            div.appendChild(canvas);
+            div.innerHTML += `<div class="icon-label">${item.name}</div><div class="icon-size">${item.size}x${item.size}</div>`;
+            grid.appendChild(div);
+        });
+
+        function downloadAllIcons() {
+            const progress = document.getElementById('progress');
+            progress.style.display = 'block';
+            progress.textContent = '⏳ İkonlar hazırlanıyor...';
+            
+            let index = 0;
+            
+            function downloadNext() {
+                if (index >= sizes.length) {
+                    // Round ikonları da indir
+                    downloadRoundIcons();
+                    return;
+                }
+                
+                const item = sizes[index];
+                const canvas = document.createElement('canvas');
+                drawIcon(canvas, item.size);
+                
+                const link = document.createElement('a');
+                link.download = `ic_launcher_${item.size}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                
+                progress.textContent = `📥 ${item.name} (${item.size}x${item.size}) indirildi...`;
+                index++;
+                setTimeout(downloadNext, 400);
+            }
+            
+            downloadNext();
+        }
+
+        function downloadRoundIcons() {
+            const progress = document.getElementById('progress');
+            let index = 0;
+            
+            function downloadNextRound() {
+                if (index >= sizes.length - 1) { // playstore hariç
+                    progress.textContent = '✅ Tüm ikonlar indirildi!';
+                    setTimeout(() => { progress.style.display = 'none'; }, 2000);
+                    return;
+                }
+                
+                const item = sizes[index];
+                const canvas = document.createElement('canvas');
+                drawIcon(canvas, item.size, true);
+                
+                const link = document.createElement('a');
+                link.download = `ic_launcher_round_${item.size}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                
+                progress.textContent = `📥 Round ${item.name} (${item.size}x${item.size}) indirildi...`;
+                index++;
+                setTimeout(downloadNextRound, 400);
+            }
+            
+            downloadNextRound();
+        }
+
+        function downloadForeground() {
+            const progress = document.getElementById('progress');
+            progress.style.display = 'block';
+            
+            let index = 0;
+            
+            function downloadNextFg() {
+                if (index >= foregroundSizes.length) {
+                    progress.textContent = '✅ Foreground ikonlar indirildi!';
+                    setTimeout(() => { progress.style.display = 'none'; }, 2000);
+                    return;
+                }
+                
+                const item = foregroundSizes[index];
+                const canvas = document.createElement('canvas');
+                drawIcon(canvas, item.size, false, true);
+                
+                const link = document.createElement('a');
+                link.download = `ic_launcher_foreground_${item.size}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                
+                progress.textContent = `📥 Foreground ${item.name} indirildi...`;
+                index++;
+                setTimeout(downloadNextFg, 400);
+            }
+            
+            downloadNextFg();
+        }
+    </script>
+</body>
+</html>

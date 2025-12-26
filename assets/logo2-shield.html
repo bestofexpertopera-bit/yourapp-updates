@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 2 - Shield GS</title>
+    <style>
+        body { 
+            background: #1a1a2e; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border: 3px solid rgba(76, 175, 80, 0.4);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Logo 2 - Kalkan GS</h2>
+    <div class="logo-container">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Kalkan Şekli -->
+            <path d="M40 8L12 18V38C12 55 24 68 40 74C56 68 68 55 68 38V18L40 8Z" 
+                  fill="url(#shieldGrad)" stroke="url(#strokeGrad)" stroke-width="2"/>
+            <!-- GS Yazısı -->
+            <text x="40" y="48" text-anchor="middle" font-family="Arial Black" font-size="26" font-weight="900" fill="url(#textGrad)">GS</text>
+            <!-- Üst Yıldız -->
+            <path d="M40 18L42 24L48 24L43 28L45 34L40 30L35 34L37 28L32 24L38 24Z" fill="#FFD700"/>
+            <defs>
+                <linearGradient id="shieldGrad" x1="12" y1="8" x2="68" y2="74">
+                    <stop offset="0%" stop-color="#2a3a2e"/>
+                    <stop offset="100%" stop-color="#1a2a1e"/>
+                </linearGradient>
+                <linearGradient id="strokeGrad" x1="12" y1="8" x2="68" y2="74">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="100%" stop-color="#81C784"/>
+                </linearGradient>
+                <linearGradient id="textGrad" x1="20" y1="30" x2="60" y2="60">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="100%" stop-color="#2196F3"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <p class="description">Kalkan içinde "GS" yazısı<br>Üstte altın yıldız</p>
+</body>
+</html>

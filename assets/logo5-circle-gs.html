@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 5 - Circle GS</title>
+    <style>
+        body { 
+            background: #1a1a2e; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border: 3px solid rgba(76, 175, 80, 0.4);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Logo 5 - Dairesel GS</h2>
+    <div class="logo-container">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Dış Halka -->
+            <circle cx="40" cy="40" r="36" fill="none" stroke="url(#ringGrad)" stroke-width="4"/>
+            <!-- Dönen Çizgiler -->
+            <circle cx="40" cy="40" r="32" fill="none" stroke="url(#innerRingGrad)" stroke-width="2" stroke-dasharray="10 5"/>
+            <!-- İç Daire -->
+            <circle cx="40" cy="40" r="26" fill="url(#centerGrad)"/>
+            <!-- GS Yazısı - Kalın -->
+            <text x="40" y="48" text-anchor="middle" font-family="Arial Black" font-size="24" font-weight="900" fill="#fff">GS</text>
+            <!-- Küçük Noktalar -->
+            <circle cx="40" cy="8" r="3" fill="#4CAF50"/>
+            <circle cx="72" cy="40" r="3" fill="#2196F3"/>
+            <circle cx="40" cy="72" r="3" fill="#4CAF50"/>
+            <circle cx="8" cy="40" r="3" fill="#2196F3"/>
+            <defs>
+                <linearGradient id="ringGrad" x1="4" y1="4" x2="76" y2="76">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="50%" stop-color="#2196F3"/>
+                    <stop offset="100%" stop-color="#4CAF50"/>
+                </linearGradient>
+                <linearGradient id="innerRingGrad" x1="8" y1="8" x2="72" y2="72">
+                    <stop offset="0%" stop-color="#4CAF50" stop-opacity="0.5"/>
+                    <stop offset="100%" stop-color="#2196F3" stop-opacity="0.5"/>
+                </linearGradient>
+                <linearGradient id="centerGrad" x1="14" y1="14" x2="66" y2="66">
+                    <stop offset="0%" stop-color="#2E7D32"/>
+                    <stop offset="100%" stop-color="#1565C0"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <p class="description">Dairesel modern tasarım<br>Kalın "GS" yazısı</p>
+</body>
+</html>

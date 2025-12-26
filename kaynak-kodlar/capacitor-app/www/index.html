@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>BestOfShop</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); 
+            min-height: 100vh; 
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .loader { text-align: center; padding: 20px; }
+        .spinner {
+            width: 50px; height: 50px;
+            border: 4px solid rgba(255,255,255,0.1);
+            border-top-color: #4CAF50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loader-text { font-size: 16px; color: #aaa; margin-bottom: 10px; }
+        .loader-version { font-size: 12px; color: #666; }
+        .update-box {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4CAF50;
+            border-radius: 15px;
+            padding: 25px;
+            max-width: 320px;
+            text-align: center;
+            display: none;
+        }
+        .update-box h3 { color: #4CAF50; margin-bottom: 10px; font-size: 18px; }
+        .update-box p { color: #ddd; font-size: 14px; margin-bottom: 15px; }
+        .update-box .version-info { color: #888; font-size: 12px; margin-bottom: 15px; }
+        .update-btn {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: #fff; border: none;
+            padding: 12px 30px; border-radius: 25px;
+            font-size: 14px; font-weight: bold;
+            cursor: pointer; margin: 5px;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        .skip-btn {
+            background: transparent;
+            color: #888; border: 1px solid #444;
+            padding: 10px 25px; border-radius: 25px;
+            font-size: 13px; cursor: pointer; margin: 5px;
+        }
+        .error-box {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid #f44336;
+            border-radius: 15px;
+            padding: 25px; max-width: 320px;
+            text-align: center; display: none;
+        }
+        .error-box h3 { color: #f44336; margin-bottom: 10px; }
+        .error-box p { color: #ddd; font-size: 14px; margin-bottom: 15px; }
+        .retry-btn {
+            background: #f44336; color: #fff;
+            border: none; padding: 12px 25px;
+            border-radius: 25px; font-size: 14px; cursor: pointer;
+        }
+        .debug-info {
+            position: fixed; bottom: 10px;
+            left: 10px; right: 10px;
+            font-size: 10px; color: #666;
+            text-align: center;
+        }
+        .changelog { 
+            text-align: left; 
+            background: rgba(0,0,0,0.2); 
+            border-radius: 10px; 
+            padding: 10px; 
+            margin: 10px 0;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+        .changelog div { 
+            color: #aaa; 
+            font-size: 12px; 
+            padding: 3px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <div class="loader-text">BestOfShop</div>
+        <div class="loader-version" id="loaderStatus">Güncelleme kontrol ediliyor...</div>
+    </div>
+    
+    <div class="update-box" id="updateBox">
+        <h3>🎉 Yeni Güncelleme!</h3>
+        <p id="updateMessage">Yeni bir sürüm mevcut</p>
+        <div class="version-info" id="versionInfo">v1.0.0 → v1.0.1</div>
+        <div class="changelog" id="changelog"></div>
+        <button class="update-btn" onclick="downloadUpdate()">📥 Güncelle</button>
+        <button class="skip-btn" onclick="skipUpdate()">Sonra</button>
+    </div>
+    
+    <div class="error-box" id="errorBox">
+        <h3>⚠️ Bağlantı Hatası</h3>
+        <p id="errorMessage">Sunucuya bağlanılamadı</p>
+        <button class="retry-btn" onclick="checkForUpdates()">🔄 Tekrar Dene</button>
+        <button class="skip-btn" onclick="loadCachedApp()" style="margin-top:10px;">📦 Çevrimdışı Aç</button>
+    </div>
+    
+    <div class="debug-info" id="debugInfo"></div>
+
+    <script>
+        var GITHUB_BASE = 'https://raw.githubusercontent.com/LineOft/thebestml-updates/main/';
+        var CACHE_KEY = 'ota_app_html';
+        var VERSION_KEY = 'ota_app_version';
+        var MANIFEST_KEY = 'ota_manifest';
+        var BUNDLED_VERSION = '3.12.6'; // APK içindeki sürüm
+        
+        var currentManifest = null;
+        var cachedVersion = null;
+        
+        function log(msg) {
+            console.log('[OTA] ' + msg);
+            var el = document.getElementById('debugInfo');
+            if (el) el.textContent = msg;
+        }
+        
+        function status(text) {
+            var el = document.getElementById('loaderStatus');
+            if (el) el.textContent = text;
+        }
+        
+        function showLoader() {
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('updateBox').style.display = 'none';
+            document.getElementById('errorBox').style.display = 'none';
+        }
+        
+        function showUpdateBox(manifest) {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('updateBox').style.display = 'block';
+            document.getElementById('errorBox').style.display = 'none';
+            
+            var current = getCachedVersion() || BUNDLED_VERSION;
+            document.getElementById('versionInfo').textContent = 'v' + current + ' → v' + manifest.version;
+            document.getElementById('updateMessage').textContent = 'Yeni özellikler ve düzeltmeler mevcut!';
+            
+            var changelogEl = document.getElementById('changelog');
+            if (manifest.changelog && manifest.changelog.length > 0) {
+                changelogEl.innerHTML = manifest.changelog.map(function(c) {
+                    return '<div>' + c + '</div>';
+                }).join('');
+                changelogEl.style.display = 'block';
+            } else {
+                changelogEl.style.display = 'none';
+            }
+        }
+        
+        function showError(msg) {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('updateBox').style.display = 'none';
+            document.getElementById('errorBox').style.display = 'block';
+            document.getElementById('errorMessage').textContent = msg;
+        }
+        
+        function compareVersions(v1, v2) {
+            var p1 = v1.split('.').map(Number);
+            var p2 = v2.split('.').map(Number);
+            for (var i = 0; i < 3; i++) {
+                var a = p1[i] || 0;
+                var b = p2[i] || 0;
+                if (a > b) return 1;
+                if (a < b) return -1;
+            }
+            return 0;
+        }
+        
+        function getCachedVersion() {
+            try {
+                return localStorage.getItem(VERSION_KEY);
+            } catch(e) { return null; }
+        }
+        
+        function getCachedApp() {
+            try {
+                return localStorage.getItem(CACHE_KEY);
+            } catch(e) { return null; }
+        }
+        
+        function setCachedApp(html, version) {
+            try {
+                localStorage.setItem(CACHE_KEY, html);
+                localStorage.setItem(VERSION_KEY, version);
+                log('Cache kaydedildi: v' + version);
+            } catch(e) {
+                log('Cache kaydetme hatası: ' + e.message);
+            }
+        }
+        
+        function loadApp(html) {
+            log('Uygulama yükleniyor...');
+            setTimeout(function() {
+                try {
+                    document.open();
+                    document.write(html);
+                    document.close();
+                } catch(e) {
+                    log('Document write hatası, reload yapılıyor...');
+                    window.location.reload(true);
+                }
+            }, 100);
+        }
+        
+        function loadCachedApp() {
+            var cached = getCachedApp();
+            var cachedVer = getCachedVersion();
+            if (cached && cachedVer) {
+                log('Cache yükleniyor: v' + cachedVer);
+                // Önce cache'den yükle
+                try {
+                    document.open();
+                    document.write(cached);
+                    document.close();
+                } catch(e) {
+                    log('Cache yükleme hatası, yerel dosya açılıyor...');
+                    window.location.href = 'app_v2.html';
+                }
+            } else {
+                // Cache yoksa bundled app.html'i yükle
+                log('Yerel uygulama yükleniyor...');
+                window.location.href = 'app_v2.html';
+            }
+        }
+        
+        function fetchWithTimeout(url, timeout) {
+            return new Promise(function(resolve, reject) {
+                var xhr = new XMLHttpRequest();
+                xhr.timeout = timeout;
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            resolve(xhr.responseText);
+                        } else {
+                            reject(new Error('HTTP ' + xhr.status));
+                        }
+                    }
+                };
+                xhr.ontimeout = function() { reject(new Error('Timeout')); };
+                xhr.onerror = function() { reject(new Error('Network error')); };
+                xhr.open('GET', url + '?t=' + Date.now(), true);
+                xhr.send();
+            });
+        }
+        
+        async function checkForUpdates() {
+            showLoader();
+            status('Güncelleme kontrol ediliyor...');
+            log('Manifest kontrol ediliyor...');
+            
+            try {
+                // Manifest'i çek
+                var manifestText = await fetchWithTimeout(GITHUB_BASE + 'manifest.json', 10000);
+                currentManifest = JSON.parse(manifestText);
+                log('Manifest alındı: v' + currentManifest.version);
+                
+                // Mevcut sürümü al
+                var currentVersion = getCachedVersion() || BUNDLED_VERSION;
+                log('Mevcut sürüm: v' + currentVersion);
+                
+                // Sürüm karşılaştır
+                if (compareVersions(currentManifest.version, currentVersion) > 0) {
+                    // Yeni sürüm var
+                    log('Yeni sürüm mevcut: v' + currentManifest.version);
+                    showUpdateBox(currentManifest);
+                } else {
+                    // Güncel, direkt yükle
+                    log('Uygulama güncel');
+                    status('Uygulama başlatılıyor...');
+                    loadCachedApp();
+                }
+            } catch(e) {
+                log('Manifest hatası: ' + e.message);
+                
+                // İnternet yok, cache veya bundled'ı yükle
+                var cached = getCachedApp();
+                if (cached) {
+                    log('Çevrimdışı mod - cache yükleniyor');
+                    status('Çevrimdışı mod...');
+                    setTimeout(function() { loadCachedApp(); }, 500);
+                } else {
+                    log('Çevrimdışı mod - yerel yükleniyor');
+                    status('Yerel uygulama başlatılıyor...');
+                    setTimeout(function() { window.location.href = 'app_v2.html'; }, 500);
+                }
+            }
+        }
+        
+        async function downloadUpdate() {
+            if (!currentManifest) return;
+            
+            showLoader();
+            status('Güncelleme indiriliyor...');
+            log('app.html indiriliyor...');
+            
+            try {
+                var html = await fetchWithTimeout(GITHUB_BASE + 'app.html', 30000);
+                
+                // İçerik kontrolü
+                if (html.length < 5000 || html.indexOf('APP_VERSION') === -1) {
+                    throw new Error('Geçersiz içerik');
+                }
+                
+                // Sürüm kontrolü
+                var match = html.match(/APP_VERSION\s*=\s*['"]([^'"]+)['"]/);
+                var downloadedVersion = match ? match[1] : currentManifest.version;
+                
+                log('İndirildi: v' + downloadedVersion);
+                status('Güncelleme yükleniyor...');
+                
+                // Cache'e kaydet
+                setCachedApp(html, downloadedVersion);
+                
+                // Yükle
+                setTimeout(function() { loadApp(html); }, 500);
+                
+            } catch(e) {
+                log('İndirme hatası: ' + e.message);
+                showError('Güncelleme indirilemedi: ' + e.message);
+            }
+        }
+        
+        function skipUpdate() {
+            log('Güncelleme atlandı');
+            loadCachedApp();
+        }
+        
+        // Başlat
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', checkForUpdates);
+        } else {
+            checkForUpdates();
+        }
+    </script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,16 @@
+{
+  "appId": "com.thebestml.installer",
+  "appName": "Game Store",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "android": {
+    "allowMixedContent": true,
+    "backgroundColor": "#1a1a2e",
+    "webContentsDebuggingEnabled": true
+  },
+  "server": {
+    "androidScheme": "https",
+    "allowNavigation": ["*"],
+    "cleartext": true
+  }
+}

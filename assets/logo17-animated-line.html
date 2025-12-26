@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 17 - Animasyonlu GS (Çizgi)</title>
+    <style>
+        body { background: #1a1a2e; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container { width: 150px; height: 150px; border-radius: 35px; background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%); border: 3px solid rgba(76, 175, 80, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+        
+        /* Animasyonlar */
+        .g-line { 
+            stroke-dasharray: 300; 
+            stroke-dashoffset: 300; 
+            animation: drawG 2s ease-out forwards;
+        }
+        .s-line { 
+            stroke-dasharray: 300; 
+            stroke-dashoffset: -300; 
+            animation: drawS 2s ease-out forwards;
+        }
+        @keyframes drawG {
+            0% { stroke-dashoffset: 300; }
+            100% { stroke-dashoffset: 0; }
+        }
+        @keyframes drawS {
+            0% { stroke-dashoffset: -300; }
+            100% { stroke-dashoffset: 0; }
+        }
+        
+        .replay-btn { margin-top: 20px; background: #4CAF50; border: none; color: #fff; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-size: 14px; }
+        .replay-btn:hover { background: #45a049; }
+    </style>
+</head>
+<body>
+    <h2>Logo 17 - Çizgi Animasyonu</h2>
+    <div class="logo-container" id="logoContainer">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- G Harfi - Soldan Gelen -->
+            <path class="g-line" d="M15 85V45C15 30 25 20 40 20H55V32H40C32 32 28 36 28 45V85C28 92 32 98 40 98H55V65H42V53H68V85C68 100 58 110 43 110H40C25 110 15 100 15 85Z" 
+                  fill="none" stroke="url(#gGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            
+            <!-- S Harfi - Sağdan Gelen -->
+            <path class="s-line" d="M105 45C105 30 95 20 80 20H65V32H80C88 32 92 36 92 45V50C92 58 88 62 80 62H65C50 62 40 72 40 85V90C40 105 50 110 65 110H105V98H65C57 98 53 94 53 85V80C53 72 57 68 65 68H80C95 68 105 58 105 45Z" 
+                  fill="none" stroke="url(#sGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            
+            <defs>
+                <linearGradient id="gGrad" x1="15" y1="20" x2="68" y2="110">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="100%" stop-color="#81C784"/>
+                </linearGradient>
+                <linearGradient id="sGrad" x1="105" y1="20" x2="40" y2="110">
+                    <stop offset="0%" stop-color="#2196F3"/>
+                    <stop offset="100%" stop-color="#64B5F6"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <p class="description">G soldan çizilerek gelir<br>S sağdan çizilerek gelir</p>
+    <button class="replay-btn" onclick="replay()">🔄 Tekrar Oynat</button>
+    
+    <script>
+        function replay() {
+            const container = document.getElementById('logoContainer');
+            container.innerHTML = container.innerHTML;
+        }
+    </script>
+</body>
+</html>

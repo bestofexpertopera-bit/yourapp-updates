@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 9 - Lightning Bolt</title>
+    <style>
+        body { background: #1a1a2e; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container { width: 120px; height: 120px; border-radius: 28px; background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%); border: 3px solid rgba(76, 175, 80, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3); display: flex; align-items: center; justify-content: center; }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Logo 9 - Şimşek</h2>
+    <div class="logo-container">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Arka Plan Daire -->
+            <circle cx="40" cy="40" r="35" fill="url(#bgGrad9)" stroke="#4CAF50" stroke-width="2"/>
+            <!-- Şimşek -->
+            <path d="M45 10L20 42H35L30 70L60 35H42L45 10Z" fill="url(#boltGrad)" stroke="#FFD700" stroke-width="1"/>
+            <!-- Parıltılar -->
+            <circle cx="25" cy="25" r="3" fill="#fff" opacity="0.6"/>
+            <circle cx="58" cy="55" r="2" fill="#fff" opacity="0.4"/>
+            <defs>
+                <linearGradient id="bgGrad9" x1="5" y1="5" x2="75" y2="75">
+                    <stop offset="0%" stop-color="#1a2a1e"/>
+                    <stop offset="100%" stop-color="#0f1a12"/>
+                </linearGradient>
+                <linearGradient id="boltGrad" x1="20" y1="10" x2="60" y2="70">
+                    <stop offset="0%" stop-color="#FFD700"/>
+                    <stop offset="50%" stop-color="#FFA000"/>
+                    <stop offset="100%" stop-color="#FF6F00"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <p class="description">Güçlü şimşek tasarımı<br>Enerji ve hız simgesi</p>
+</body>
+</html>

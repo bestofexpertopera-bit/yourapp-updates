@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 18 - Animasyonlu GS (Neon)</title>
+    <style>
+        body { background: #0a0a0f; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container { width: 150px; height: 150px; border-radius: 35px; background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%); border: 3px solid rgba(76, 175, 80, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+        
+        /* Neon Glow Animasyonu */
+        .g-path { 
+            stroke-dasharray: 400; 
+            stroke-dashoffset: 400; 
+            animation: drawNeonG 1.5s ease-out forwards, glowG 1s ease-in-out 1.5s infinite alternate;
+            filter: drop-shadow(0 0 3px #4CAF50);
+        }
+        .s-path { 
+            stroke-dasharray: 400; 
+            stroke-dashoffset: -400; 
+            animation: drawNeonS 1.5s ease-out forwards, glowS 1s ease-in-out 1.5s infinite alternate;
+            filter: drop-shadow(0 0 3px #2196F3);
+        }
+        
+        @keyframes drawNeonG {
+            0% { stroke-dashoffset: 400; opacity: 0; }
+            10% { opacity: 1; }
+            100% { stroke-dashoffset: 0; }
+        }
+        @keyframes drawNeonS {
+            0% { stroke-dashoffset: -400; opacity: 0; }
+            10% { opacity: 1; }
+            100% { stroke-dashoffset: 0; }
+        }
+        @keyframes glowG {
+            0% { filter: drop-shadow(0 0 5px #4CAF50) drop-shadow(0 0 10px #4CAF50); }
+            100% { filter: drop-shadow(0 0 15px #4CAF50) drop-shadow(0 0 30px #4CAF50); }
+        }
+        @keyframes glowS {
+            0% { filter: drop-shadow(0 0 5px #2196F3) drop-shadow(0 0 10px #2196F3); }
+            100% { filter: drop-shadow(0 0 15px #2196F3) drop-shadow(0 0 30px #2196F3); }
+        }
+        
+        .replay-btn { margin-top: 20px; background: #4CAF50; border: none; color: #fff; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-size: 14px; }
+        .replay-btn:hover { background: #45a049; }
+    </style>
+</head>
+<body>
+    <h2>Logo 18 - Neon Çizgi</h2>
+    <div class="logo-container" id="logoContainer">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- G Harfi - Neon -->
+            <path class="g-path" d="M20 80V50C20 35 30 25 45 25H58V35H45C38 35 34 40 34 50V80C34 88 38 92 45 92H58V65H46V55H70V80C70 95 60 105 47 105H45C30 105 20 95 20 80Z" 
+                  fill="none" stroke="#4CAF50" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            
+            <!-- S Harfi - Neon -->
+            <path class="s-path" d="M100 50C100 35 90 25 75 25H62V35H75C83 35 88 40 88 50C88 58 83 62 75 62H62C47 62 38 72 38 85C38 100 48 105 62 105H100V95H62C54 95 50 90 50 85C50 77 54 73 62 73H75C90 73 100 63 100 50Z" 
+                  fill="none" stroke="#2196F3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+    <p class="description">Neon efektli çizim<br>Parlayan GS logosu</p>
+    <button class="replay-btn" onclick="replay()">🔄 Tekrar Oynat</button>
+    
+    <script>
+        function replay() {
+            const container = document.getElementById('logoContainer');
+            container.innerHTML = container.innerHTML;
+        }
+    </script>
+</body>
+</html>

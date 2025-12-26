@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Logo 22 - PNG İndir</title>
+    <style>
+        body { 
+            background: #1a1a2e; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            font-family: Arial, sans-serif; 
+            color: #fff;
+        }
+        h1 { margin-bottom: 30px; color: #4CAF50; }
+        .preview { margin: 20px 0; }
+        canvas { 
+            border-radius: 35px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .buttons { display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap; justify-content: center; }
+        .btn {
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            border: none;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 5px 25px rgba(76, 175, 80, 0.4); }
+        .btn.secondary { background: #333; }
+        .info { color: #888; margin-top: 20px; text-align: center; }
+        .sizes { display: flex; gap: 20px; margin-top: 30px; flex-wrap: wrap; justify-content: center; }
+        .size-option { 
+            background: rgba(255,255,255,0.05); 
+            padding: 15px 25px; 
+            border-radius: 10px; 
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .size-option:hover, .size-option.active { border-color: #4CAF50; background: rgba(76, 175, 80, 0.2); }
+    </style>
+</head>
+<body>
+    <h1>🎮 Game Store Logo 22 - Lazer Efekti</h1>
+    
+    <div class="sizes">
+        <div class="size-option active" onclick="setSize(512)">512x512</div>
+        <div class="size-option" onclick="setSize(256)">256x256</div>
+        <div class="size-option" onclick="setSize(192)">192x192</div>
+        <div class="size-option" onclick="setSize(144)">144x144</div>
+        <div class="size-option" onclick="setSize(96)">96x96</div>
+        <div class="size-option" onclick="setSize(72)">72x72</div>
+        <div class="size-option" onclick="setSize(48)">48x48</div>
+    </div>
+    
+    <div class="preview">
+        <canvas id="logoCanvas" width="512" height="512"></canvas>
+    </div>
+    
+    <div class="buttons">
+        <button class="btn" onclick="downloadPNG()">📥 PNG İndir</button>
+        <button class="btn secondary" onclick="downloadAllSizes()">📦 Tüm Boyutları İndir</button>
+    </div>
+    
+    <p class="info">Seçili boyut: <span id="sizeInfo">512x512</span></p>
+
+    <script>
+        let currentSize = 512;
+        
+        function setSize(size) {
+            currentSize = size;
+            document.querySelectorAll('.size-option').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('sizeInfo').textContent = size + 'x' + size;
+            drawLogo(size);
+        }
+        
+        function drawLogo(size) {
+            const canvas = document.getElementById('logoCanvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            
+            const scale = size / 512;
+            
+            // Arka plan - gradient
+            const bgGrad = ctx.createLinearGradient(0, 0, size, size);
+            bgGrad.addColorStop(0, '#1a1a2e');
+            bgGrad.addColorStop(1, '#0f0f1a');
+            
+            // Yuvarlak köşeli arka plan
+            const radius = 70 * scale;
+            ctx.beginPath();
+            ctx.roundRect(0, 0, size, size, radius);
+            ctx.fillStyle = bgGrad;
+            ctx.fill();
+            
+            // Border
+            ctx.strokeStyle = 'rgba(76, 175, 80, 0.4)';
+            ctx.lineWidth = 6 * scale;
+            ctx.stroke();
+            
+            // G Harfi
+            ctx.font = `900 ${200 * scale}px Arial Black, sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // G Glow
+            ctx.shadowColor = '#4CAF50';
+            ctx.shadowBlur = 30 * scale;
+            ctx.fillStyle = '#4CAF50';
+            ctx.fillText('G', size * 0.32, size * 0.52);
+            
+            // S Glow
+            ctx.shadowColor = '#2196F3';
+            ctx.shadowBlur = 30 * scale;
+            ctx.fillStyle = '#2196F3';
+            ctx.fillText('S', size * 0.68, size * 0.52);
+            
+            // Lazer çizgileri (statik versiyon)
+            ctx.shadowBlur = 0;
+            
+            // Sol lazer izi
+            const laserGrad1 = ctx.createLinearGradient(0, size/2, size * 0.35, size/2);
+            laserGrad1.addColorStop(0, 'transparent');
+            laserGrad1.addColorStop(0.5, 'rgba(76, 175, 80, 0.3)');
+            laserGrad1.addColorStop(1, 'transparent');
+            ctx.fillStyle = lazerGrad1;
+            ctx.fillRect(0, size/2 - 4*scale, size * 0.35, 8*scale);
+            
+            // Sağ lazer izi
+            const laserGrad2 = ctx.createLinearGradient(size * 0.65, size/2, size, size/2);
+            laserGrad2.addColorStop(0, 'transparent');
+            laserGrad2.addColorStop(0.5, 'rgba(33, 150, 243, 0.3)');
+            laserGrad2.addColorStop(1, 'transparent');
+            ctx.fillStyle = laserGrad2;
+            ctx.fillRect(size * 0.65, size/2 - 4*scale, size * 0.35, 8*scale);
+            
+            // Merkez parlama
+            const centerGlow = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, 50*scale);
+            centerGlow.addColorStop(0, 'rgba(255, 255, 255, 0.3)');
+            centerGlow.addColorStop(1, 'transparent');
+            ctx.fillStyle = centerGlow;
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, 50*scale, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        function downloadPNG() {
+            const canvas = document.getElementById('logoCanvas');
+            const link = document.createElement('a');
+            link.download = `GameStore_Logo_${currentSize}x${currentSize}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        function downloadAllSizes() {
+            const sizes = [512, 256, 192, 144, 96, 72, 48];
+            sizes.forEach((size, index) => {
+                setTimeout(() => {
+                    drawLogo(size);
+                    const canvas = document.getElementById('logoCanvas');
+                    const link = document.createElement('a');
+                    link.download = `GameStore_Logo_${size}x${size}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                }, index * 500);
+            });
+            // Sonra orijinal boyuta dön
+            setTimeout(() => {
+                drawLogo(currentSize);
+            }, sizes.length * 500 + 100);
+        }
+        
+        // İlk çizim
+        drawLogo(512);
+    </script>
+</body>
+</html>

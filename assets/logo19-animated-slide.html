@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 19 - Animasyonlu GS (Slide)</title>
+    <style>
+        body { background: #0a0a0f; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container { width: 150px; height: 150px; border-radius: 35px; background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%); border: 3px solid rgba(76, 175, 80, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+        
+        /* Slide Animasyonu */
+        .g-letter {
+            position: absolute;
+            left: -60px;
+            animation: slideFromLeft 1s ease-out forwards;
+        }
+        .s-letter {
+            position: absolute;
+            right: -60px;
+            animation: slideFromRight 1s ease-out forwards;
+        }
+        
+        @keyframes slideFromLeft {
+            0% { left: -60px; opacity: 0; }
+            100% { left: 18px; opacity: 1; }
+        }
+        @keyframes slideFromRight {
+            0% { right: -60px; opacity: 0; }
+            100% { right: 18px; opacity: 1; }
+        }
+        
+        /* Birleşme Efekti */
+        .merge-glow {
+            position: absolute;
+            width: 30px;
+            height: 100px;
+            background: radial-gradient(ellipse, rgba(76, 175, 80, 0.5) 0%, transparent 70%);
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: mergeGlow 0.5s ease-in-out 0.8s forwards;
+        }
+        
+        @keyframes mergeGlow {
+            0% { opacity: 0; width: 30px; }
+            50% { opacity: 1; width: 60px; }
+            100% { opacity: 0; width: 30px; }
+        }
+        
+        .replay-btn { margin-top: 20px; background: #4CAF50; border: none; color: #fff; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-size: 14px; }
+        .replay-btn:hover { background: #45a049; }
+    </style>
+</head>
+<body>
+    <h2>Logo 19 - Kayarak Birleşme</h2>
+    <div class="logo-container" id="logoContainer">
+        <div class="merge-glow"></div>
+        <svg class="g-letter" width="55" height="100" viewBox="0 0 55 100" fill="none">
+            <path d="M5 75V35C5 20 15 10 30 10H45V22H30C22 22 18 27 18 35V75C18 83 22 88 30 88H45V55H32V43H55V75C55 90 45 100 32 100H30C15 100 5 90 5 75Z" 
+                  fill="url(#gFillGrad)"/>
+            <defs>
+                <linearGradient id="gFillGrad" x1="5" y1="10" x2="55" y2="100">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="100%" stop-color="#81C784"/>
+                </linearGradient>
+            </defs>
+        </svg>
+        <svg class="s-letter" width="55" height="100" viewBox="0 0 55 100" fill="none">
+            <path d="M50 35C50 20 40 10 25 10H0V22H25C33 22 38 27 38 35C38 43 33 48 25 48H10C-5 48 -10 58 -10 70V75C-10 90 0 100 15 100H50V88H15C7 88 3 83 3 75V70C3 62 7 58 15 58H25C40 58 50 48 50 35Z" 
+                  fill="url(#sFillGrad)"/>
+            <defs>
+                <linearGradient id="sFillGrad" x1="50" y1="10" x2="0" y2="100">
+                    <stop offset="0%" stop-color="#2196F3"/>
+                    <stop offset="100%" stop-color="#64B5F6"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <p class="description">G soldan kayar, S sağdan kayar<br>Ortada birleşir</p>
+    <button class="replay-btn" onclick="replay()">🔄 Tekrar Oynat</button>
+    
+    <script>
+        function replay() {
+            const container = document.getElementById('logoContainer');
+            container.innerHTML = container.innerHTML;
+        }
+    </script>
+</body>
+</html>

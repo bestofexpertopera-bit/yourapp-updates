@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 16 - Stylized G</title>
+    <style>
+        body { background: #1a1a2e; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container { width: 120px; height: 120px; border-radius: 28px; background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%); border: 3px solid rgba(76, 175, 80, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3); display: flex; align-items: center; justify-content: center; }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Logo 16 - Stilize G</h2>
+    <div class="logo-container">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Dış Çerçeve -->
+            <rect x="8" y="8" width="64" height="64" rx="16" fill="none" stroke="url(#frameGrad16)" stroke-width="2"/>
+            <!-- Büyük G Harfi - Modern Tasarım -->
+            <path d="M25 58V28C25 20 30 15 40 15H52V23H40C35 23 33 25 33 28V58C33 61 35 63 40 63H52V45H42V37H60V58C60 66 55 71 45 71H40C30 71 25 66 25 58Z" 
+                  fill="url(#letterGGrad)"/>
+            <!-- İç Glow -->
+            <path d="M25 58V28C25 20 30 15 40 15H52V23H40C35 23 33 25 33 28V58C33 61 35 63 40 63H52V45H42V37H60V58C60 66 55 71 45 71H40C30 71 25 66 25 58Z" 
+                  fill="url(#glowGrad16)" opacity="0.3"/>
+            <defs>
+                <linearGradient id="frameGrad16" x1="8" y1="8" x2="72" y2="72">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="100%" stop-color="#2196F3"/>
+                </linearGradient>
+                <linearGradient id="letterGGrad" x1="25" y1="15" x2="60" y2="71">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="50%" stop-color="#66BB6A"/>
+                    <stop offset="100%" stop-color="#81C784"/>
+                </linearGradient>
+                <linearGradient id="glowGrad16" x1="25" y1="15" x2="60" y2="71">
+                    <stop offset="0%" stop-color="#fff"/>
+                    <stop offset="100%" stop-color="#4CAF50"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <p class="description">Büyük stilize "G" harfi<br>Modern ve cesur tasarım</p>
+</body>
+</html>

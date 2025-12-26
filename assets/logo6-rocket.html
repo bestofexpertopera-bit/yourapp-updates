@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 6 - Rocket</title>
+    <style>
+        body { 
+            background: #1a1a2e; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border: 3px solid rgba(76, 175, 80, 0.4);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Logo 6 - Roket</h2>
+    <div class="logo-container">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Roket Gövdesi -->
+            <path d="M40 8C40 8 55 20 55 40C55 55 45 65 40 70C35 65 25 55 25 40C25 20 40 8 40 8Z" 
+                  fill="url(#rocketGrad)" stroke="#4CAF50" stroke-width="2"/>
+            <!-- Roket Penceresi -->
+            <circle cx="40" cy="32" r="8" fill="#1a1a2e" stroke="#2196F3" stroke-width="2"/>
+            <circle cx="40" cy="32" r="4" fill="#2196F3"/>
+            <!-- Sol Kanat -->
+            <path d="M25 45L15 55L20 60L28 52" fill="url(#wingGrad)" stroke="#4CAF50" stroke-width="1"/>
+            <!-- Sağ Kanat -->
+            <path d="M55 45L65 55L60 60L52 52" fill="url(#wingGrad)" stroke="#4CAF50" stroke-width="1"/>
+            <!-- Alev -->
+            <path d="M35 68L40 78L45 68C45 68 42 72 40 72C38 72 35 68 35 68Z" fill="#FF5722"/>
+            <path d="M37 68L40 75L43 68" fill="#FFD700"/>
+            <defs>
+                <linearGradient id="rocketGrad" x1="25" y1="8" x2="55" y2="70">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="100%" stop-color="#2E7D32"/>
+                </linearGradient>
+                <linearGradient id="wingGrad" x1="15" y1="45" x2="30" y2="60">
+                    <stop offset="0%" stop-color="#2196F3"/>
+                    <stop offset="100%" stop-color="#1565C0"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <p class="description">Fırlayan roket tasarımı<br>Hız ve güç simgesi</p>
+</body>
+</html>

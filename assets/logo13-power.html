@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 13 - Power Button</title>
+    <style>
+        body { background: #1a1a2e; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container { width: 120px; height: 120px; border-radius: 28px; background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%); border: 3px solid rgba(76, 175, 80, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3); display: flex; align-items: center; justify-content: center; }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Logo 13 - Güç Butonu</h2>
+    <div class="logo-container">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Dış Halka Glow -->
+            <circle cx="40" cy="42" r="28" fill="none" stroke="url(#powerGlow)" stroke-width="6" opacity="0.3"/>
+            <!-- Güç Sembolü - Yarım Daire -->
+            <path d="M22 30C16 37 14 46 16 54C18 62 24 68 32 72C40 76 50 76 58 72C66 68 72 60 74 52C76 44 74 36 68 28" 
+                  fill="none" stroke="url(#powerGrad)" stroke-width="5" stroke-linecap="round"/>
+            <!-- Güç Sembolü - Dikey Çizgi -->
+            <line x1="40" y1="12" x2="40" y2="38" stroke="url(#powerGrad)" stroke-width="5" stroke-linecap="round"/>
+            <!-- İç Glow -->
+            <circle cx="40" cy="42" r="16" fill="url(#innerGlow13)" opacity="0.5"/>
+            <defs>
+                <linearGradient id="powerGrad" x1="14" y1="12" x2="66" y2="72">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="100%" stop-color="#81C784"/>
+                </linearGradient>
+                <linearGradient id="powerGlow" x1="12" y1="14" x2="68" y2="70">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="100%" stop-color="#2196F3"/>
+                </linearGradient>
+                <radialGradient id="innerGlow13" cx="40" cy="42" r="16">
+                    <stop offset="0%" stop-color="#4CAF50" stop-opacity="0.5"/>
+                    <stop offset="100%" stop-color="#4CAF50" stop-opacity="0"/>
+                </radialGradient>
+            </defs>
+        </svg>
+    </div>
+    <p class="description">Neon güç butonu<br>Açık/Kapalı sembolü</p>
+</body>
+</html>

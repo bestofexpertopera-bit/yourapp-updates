@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 20 - Animasyonlu GS (Morphing)</title>
+    <style>
+        body { background: #0a0a0f; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container { width: 150px; height: 150px; border-radius: 35px; background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%); border: 3px solid rgba(76, 175, 80, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+        
+        /* Çizgiden Harfe Dönüşüm */
+        .g-morph {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 0;
+            animation: morphG 2s ease-in-out forwards;
+        }
+        .s-morph {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 0;
+            animation: morphS 2s ease-in-out forwards;
+        }
+        
+        @keyframes morphG {
+            0% { 
+                d: path("M-50 60 L60 60"); 
+                stroke-width: 3;
+                opacity: 0;
+            }
+            30% { 
+                d: path("M-50 60 L60 60"); 
+                stroke-width: 3;
+                opacity: 1;
+            }
+            100% { 
+                d: path("M15 80V45C15 30 25 20 40 20H55V32H40C32 32 28 36 28 45V80C28 88 32 94 40 94H55V60H42V48H68V80C68 95 58 105 43 105H40C25 105 15 95 15 80Z"); 
+                stroke-width: 0;
+                opacity: 1;
+            }
+        }
+        
+        @keyframes morphS {
+            0% { 
+                d: path("M170 60 L60 60"); 
+                stroke-width: 3;
+                opacity: 0;
+            }
+            30% { 
+                d: path("M170 60 L60 60"); 
+                stroke-width: 3;
+                opacity: 1;
+            }
+            100% { 
+                d: path("M105 45C105 30 95 20 80 20H52V32H80C88 32 92 36 92 45C92 53 88 58 80 58H65C50 58 40 68 40 80V85C40 100 50 105 65 105H105V93H65C57 93 53 88 53 80C53 72 57 68 65 68H80C95 68 105 58 105 45Z"); 
+                stroke-width: 0;
+                opacity: 1;
+            }
+        }
+        
+        .replay-btn { margin-top: 20px; background: #4CAF50; border: none; color: #fff; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-size: 14px; }
+        .replay-btn:hover { background: #45a049; }
+    </style>
+</head>
+<body>
+    <h2>Logo 20 - Çizgiden Harfe</h2>
+    <div class="logo-container" id="logoContainer">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- G - Soldan çizgi olarak gelip harfe dönüşür -->
+            <path class="g-morph" d="M15 80V45C15 30 25 20 40 20H55V32H40C32 32 28 36 28 45V80C28 88 32 94 40 94H55V60H42V48H68V80C68 95 58 105 43 105H40C25 105 15 95 15 80Z" 
+                  fill="url(#gMorphGrad)" stroke="#4CAF50"/>
+            
+            <!-- S - Sağdan çizgi olarak gelip harfe dönüşür -->
+            <path class="s-morph" d="M105 45C105 30 95 20 80 20H52V32H80C88 32 92 36 92 45C92 53 88 58 80 58H65C50 58 40 68 40 80V85C40 100 50 105 65 105H105V93H65C57 93 53 88 53 80C53 72 57 68 65 68H80C95 68 105 58 105 45Z" 
+                  fill="url(#sMorphGrad)" stroke="#2196F3"/>
+            
+            <defs>
+                <linearGradient id="gMorphGrad" x1="15" y1="20" x2="68" y2="105">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="100%" stop-color="#81C784"/>
+                </linearGradient>
+                <linearGradient id="sMorphGrad" x1="105" y1="20" x2="40" y2="105">
+                    <stop offset="0%" stop-color="#2196F3"/>
+                    <stop offset="100%" stop-color="#64B5F6"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <p class="description">Yatay çizgiler gelir<br>GS harflerine dönüşür</p>
+    <button class="replay-btn" onclick="replay()">🔄 Tekrar Oynat</button>
+    
+    <script>
+        function replay() {
+            const container = document.getElementById('logoContainer');
+            container.innerHTML = container.innerHTML;
+        }
+    </script>
+</body>
+</html>

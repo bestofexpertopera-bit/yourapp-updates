@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo 21 - Animasyonlu GS (Parçacık)</title>
+    <style>
+        body { background: #0a0a0f; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
+        h2 { color: #fff; margin-bottom: 30px; }
+        .logo-container { width: 150px; height: 150px; border-radius: 35px; background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%); border: 3px solid rgba(76, 175, 80, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(76, 175, 80, 0.3); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+        .description { color: #888; margin-top: 20px; text-align: center; }
+        
+        .g-text, .s-text {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 55px;
+            font-weight: 900;
+            position: absolute;
+        }
+        
+        .g-text {
+            left: 22px;
+            color: #4CAF50;
+            text-shadow: 0 0 20px #4CAF50;
+            animation: particleG 1.5s ease-out forwards;
+            clip-path: inset(0 100% 0 0);
+        }
+        
+        .s-text {
+            right: 22px;
+            color: #2196F3;
+            text-shadow: 0 0 20px #2196F3;
+            animation: particleS 1.5s ease-out forwards;
+            clip-path: inset(0 0 0 100%);
+        }
+        
+        @keyframes particleG {
+            0% { clip-path: inset(0 100% 0 0); opacity: 0; }
+            100% { clip-path: inset(0 0% 0 0); opacity: 1; }
+        }
+        
+        @keyframes particleS {
+            0% { clip-path: inset(0 0 0 100%); opacity: 0; }
+            100% { clip-path: inset(0 0 0 0%); opacity: 1; }
+        }
+        
+        /* Parçacıklar */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #4CAF50;
+            border-radius: 50%;
+            opacity: 0;
+        }
+        
+        .particle:nth-child(odd) { background: #2196F3; }
+        
+        .particle:nth-child(1) { left: 10px; top: 30px; animation: floatParticle 1.5s ease-out 0.1s forwards; }
+        .particle:nth-child(2) { left: 20px; top: 50px; animation: floatParticle 1.5s ease-out 0.2s forwards; }
+        .particle:nth-child(3) { left: 15px; top: 70px; animation: floatParticle 1.5s ease-out 0.3s forwards; }
+        .particle:nth-child(4) { left: 25px; top: 90px; animation: floatParticle 1.5s ease-out 0.15s forwards; }
+        .particle:nth-child(5) { right: 10px; top: 35px; animation: floatParticle2 1.5s ease-out 0.1s forwards; }
+        .particle:nth-child(6) { right: 20px; top: 55px; animation: floatParticle2 1.5s ease-out 0.25s forwards; }
+        .particle:nth-child(7) { right: 15px; top: 75px; animation: floatParticle2 1.5s ease-out 0.35s forwards; }
+        .particle:nth-child(8) { right: 25px; top: 95px; animation: floatParticle2 1.5s ease-out 0.2s forwards; }
+        
+        @keyframes floatParticle {
+            0% { transform: translateX(-50px); opacity: 1; }
+            100% { transform: translateX(30px); opacity: 0; }
+        }
+        
+        @keyframes floatParticle2 {
+            0% { transform: translateX(50px); opacity: 1; }
+            100% { transform: translateX(-30px); opacity: 0; }
+        }
+        
+        .replay-btn { margin-top: 20px; background: #4CAF50; border: none; color: #fff; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-size: 14px; }
+        .replay-btn:hover { background: #45a049; }
+    </style>
+</head>
+<body>
+    <h2>Logo 21 - Parçacık Efekti</h2>
+    <div class="logo-container" id="logoContainer">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <span class="g-text">G</span>
+        <span class="s-text">S</span>
+    </div>
+    <p class="description">Parçacıklar eşliğinde<br>G ve S ortada buluşur</p>
+    <button class="replay-btn" onclick="replay()">🔄 Tekrar Oynat</button>
+    
+    <script>
+        function replay() {
+            const container = document.getElementById('logoContainer');
+            container.innerHTML = container.innerHTML;
+        }
+    </script>
+</body>
+</html>

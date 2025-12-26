@@ -1,0 +1,12 @@
+{
+    "version": "3.14.58",
+    "buildNumber": 229,
+    "minBuildNumber": 150,
+    "releaseDate": "2025-12-24",
+    "changelog": [
+        "🔒 Şifre değiştirme özelliği eklendi",
+        "👤 Kullanıcılar artık profil menüsünden şifrelerini değiştirebilir",
+        "🔐 Firebase Auth ile güvenli şifre güncelleme"
+    ],
+    "required": false
+}

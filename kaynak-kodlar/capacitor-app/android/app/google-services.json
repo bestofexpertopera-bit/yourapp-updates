@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "634928851278",
+    "project_id": "bestofshopapk",
+    "storage_bucket": "bestofshopapk.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634928851278:android:063e29fea3d3b678ff561f",
+        "android_client_info": {
+          "package_name": "com.bestofshop.client"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQcDqyLJDxZmDslT8y05uaQqftJ9fyMYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
